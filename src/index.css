@@ -26,6 +26,58 @@ body,
   overflow-x: hidden;
 }
 
+/* Mobile nav: hamburger on the left, logo beside it (not centered / not on the right) */
+.ambigo-navbar__mobile {
+  display: none;
+  width: 100%;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
+}
+
+.ambigo-navbar__menu-btn {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.ambigo-navbar__logo-wrap {
+  grid-column: 2;
+  justify-self: start;
+  min-width: 0;
+}
+
+.ambigo-navbar__logo-wrap a {
+  justify-content: flex-start;
+}
+
+.ambigo-navbar__desktop {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .ambigo-navbar__mobile {
+    display: grid !important;
+  }
+
+  .ambigo-navbar__desktop {
+    display: none !important;
+  }
+
+  .ambigo-navbar__inner {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .ambigo-navbar__mobile {
+    display: none !important;
+  }
+
+  .ambigo-navbar__desktop {
+    display: flex !important;
+  }
+}
+
 img,
 svg,
 video,
@@ -122,9 +174,12 @@ canvas {
 }
 
 .ambigo-subpage-shell h1 {
-  font-size: clamp(2.1rem, 4vw, 4.2rem) !important;
-  line-height: 1.05 !important;
+  font-size: clamp(1.5rem, 2.8vw, 2.65rem) !important;
+  line-height: 1.15 !important;
   font-weight: 800 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual !important;
 }
 
 .ambigo-subpage-shell h1::after {
@@ -132,14 +187,16 @@ canvas {
 }
 
 .ambigo-subpage-shell h2 {
-  font-size: clamp(1.65rem, 2.6vw, 3rem) !important;
-  line-height: 1.14 !important;
+  font-size: clamp(1.2rem, 1.85vw, 1.95rem) !important;
+  line-height: 1.2 !important;
   font-weight: 800 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
 }
 
 .ambigo-subpage-shell h3 {
-  font-size: clamp(1.15rem, 1.5vw, 1.45rem) !important;
-  line-height: 1.38 !important;
+  font-size: clamp(0.98rem, 1.1vw, 1.15rem) !important;
+  line-height: 1.4 !important;
 }
 
 .ambigo-subpage-shell p,
@@ -382,6 +439,31 @@ canvas {
   border: 1px solid rgba(255, 140, 66, 0.2);
 }
 
+.ambigo-subpage-shell .hospitalintro {
+  grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1fr) !important;
+  text-align: left !important;
+}
+
+.ambigo-subpage-shell .hspitalintroright {
+  justify-self: start;
+  width: 100%;
+  max-width: 560px;
+  text-align: left !important;
+}
+
+.ambigo-subpage-shell .hspitalintroright h1 {
+  max-width: 560px;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual !important;
+  text-wrap: balance;
+  font-size: clamp(1.45rem, 2.2vw, 2.35rem) !important;
+}
+
+.ambigo-subpage-shell .hspitalintroright p {
+  max-width: 48ch;
+}
+
 .ambigo-subpage-shell main {
   overflow-x: hidden;
 }
@@ -394,7 +476,8 @@ canvas {
 .ambigo-subpage-shell main > h1:first-of-type {
   margin-top: clamp(20px, 4vw, 38px) !important;
   margin-bottom: 12px !important;
-  font-size: clamp(2rem, 4.3vw, 4rem) !important;
+  font-size: clamp(1.55rem, 3vw, 2.65rem) !important;
+  max-width: 1120px !important;
 }
 
 .ambigo-subpage-shell main > h1:first-of-type + p,
@@ -413,8 +496,8 @@ canvas {
 .ambigo-subpage-shell .conmain-heading h1 {
   max-width: 1040px;
   margin: 0 auto 14px !important;
-  font-size: clamp(2rem, 5vw, 4.6rem) !important;
-  line-height: 1.02 !important;
+  font-size: clamp(1.55rem, 3.2vw, 2.75rem) !important;
+  line-height: 1.12 !important;
 }
 
 .ambigo-subpage-shell .consubtitle {
@@ -502,9 +585,25 @@ canvas {
 .ambigo-subpage-shell .indiservleft h1,
 .ambigo-subpage-shell .hspitalintroright h1,
 .ambigo-subpage-shell .ERSright h1,
-.ambigo-subpage-shell .hoscontent-text h1 {
-  font-size: clamp(1.9rem, 3.4vw, 3.8rem) !important;
-  overflow-wrap: anywhere;
+.ambigo-subpage-shell .hoscontent-text h1,
+.ambigo-subpage-shell .careerheadleft h1,
+.ambigo-subpage-shell .OurTeamAMbigo h1,
+.ambigo-subpage-shell .typeofAmbulance h1,
+.ambigo-subpage-shell .hero-content h1,
+.ambigo-subpage-shell .conpartner-card h2,
+.ambigo-subpage-shell .concontact-info-card h2,
+.ambigo-subpage-shell .conhelp-section h2,
+.ambigo-subpage-shell .Ambufeature h2,
+.ambigo-subpage-shell .benefit h2,
+.ambigo-subpage-shell .tip h3,
+.ambigo-subpage-shell .job-card h3,
+.ambigo-subpage-shell .service-card h2,
+.ambigo-subpage-shell .blog-card h2 {
+  font-size: clamp(1.35rem, 2.1vw, 2.1rem) !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual !important;
+  text-wrap: balance;
 }
 
 .ambigo-subpage-shell .historyintroleft p,
@@ -528,7 +627,7 @@ canvas {
 
 .ambigo-subpage-shell .app-promo-title {
   margin-bottom: clamp(22px, 3vw, 30px) !important;
-  font-size: clamp(2rem, 4vw, 3.8rem) !important;
+  font-size: clamp(1.55rem, 3.2vw, 2.65rem) !important;
   text-align: center !important;
 }
 
@@ -567,8 +666,8 @@ canvas {
 }
 
 .ambigo-subpage-shell .promo-text h2 {
-  font-size: clamp(1.25rem, 2.1vw, 2.35rem) !important;
-  line-height: 1.12 !important;
+  font-size: clamp(1.05rem, 1.7vw, 1.65rem) !important;
+  line-height: 1.2 !important;
 }
 
 .ambigo-subpage-shell .promo-text p {
@@ -588,7 +687,7 @@ canvas {
 }
 
 .ambigo-subpage-shell .bottom-signup h2 {
-  font-size: clamp(1.35rem, 2.4vw, 2.45rem) !important;
+  font-size: clamp(1.15rem, 2vw, 1.85rem) !important;
 }
 
 .ambigo-subpage-shell .about-container,
@@ -677,7 +776,7 @@ canvas {
 
   .ambigo-subpage-shell main > h1:first-of-type,
   .ambigo-subpage-shell .conmain-heading h1 {
-    font-size: clamp(3rem, 4vw, 4.4rem) !important;
+    font-size: clamp(1.85rem, 2.8vw, 2.75rem) !important;
   }
 }
 
@@ -720,6 +819,21 @@ canvas {
     text-align: left;
   }
 
+  .ambigo-subpage-shell .hospitalintro {
+    text-align: center !important;
+  }
+
+  .ambigo-subpage-shell .hspitalintroright {
+    justify-self: center;
+    max-width: 680px;
+    text-align: center !important;
+  }
+
+  .ambigo-subpage-shell .hspitalintroright h1,
+  .ambigo-subpage-shell .hspitalintroright p {
+    max-width: 100%;
+  }
+
   .ambigo-subpage-shell .promo-cards-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -735,11 +849,27 @@ canvas {
   }
 
   .ambigo-subpage-shell h1 {
-    font-size: clamp(1.9rem, 8vw, 3.1rem) !important;
+    font-size: clamp(1.4rem, 6vw, 2.05rem) !important;
   }
 
   .ambigo-subpage-shell h2 {
-    font-size: clamp(1.45rem, 6vw, 2.35rem) !important;
+    font-size: clamp(1.1rem, 4.5vw, 1.65rem) !important;
+  }
+
+  .ambigo-subpage-shell .historyintroleft h1,
+  .ambigo-subpage-shell .indiservleft h1,
+  .ambigo-subpage-shell .hspitalintroright h1,
+  .ambigo-subpage-shell .ERSright h1,
+  .ambigo-subpage-shell .hoscontent-text h1 {
+    font-size: clamp(1.3rem, 5.5vw, 1.85rem) !important;
+  }
+
+  .ambigo-subpage-shell .app-promo-title {
+    font-size: clamp(1.45rem, 6vw, 2.1rem) !important;
+  }
+
+  .ambigo-subpage-shell .promo-text h2 {
+    font-size: clamp(1rem, 4vw, 1.35rem) !important;
   }
 
   .ambigo-subpage-shell p,
@@ -787,7 +917,7 @@ canvas {
 @media (max-width: 520px) {
   .ambigo-subpage-shell main > h1:first-of-type,
   .ambigo-subpage-shell .conmain-heading h1 {
-    font-size: clamp(1.85rem, 11vw, 2.8rem) !important;
+    font-size: clamp(1.35rem, 7vw, 1.85rem) !important;
   }
 
   .ambigo-subpage-shell .promo-card-content {
@@ -795,7 +925,7 @@ canvas {
   }
 
   .ambigo-subpage-shell .promo-text h2 {
-    font-size: 1.18rem !important;
+    font-size: 1rem !important;
   }
 
   .ambigo-subpage-shell .arrow-icon svg {
@@ -878,13 +1008,16 @@ canvas {
   letter-spacing: 0;
 }
 
-.journey-home h2 {
-  font-size: clamp(2rem, 3.3vw, 3.6rem) !important;
-  line-height: 1.08 !important;
+.ambigo-subpage-shell :is(h1, h2, h3, h4),
+.journey-home :is(h1, h2, h3, h4) {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual !important;
 }
 
-.journey-home h3 {
-  overflow-wrap: anywhere;
+.journey-home h2 {
+  font-size: clamp(1.65rem, 2.8vw, 2.85rem) !important;
+  line-height: 1.1 !important;
 }
 
 .journey-home p {

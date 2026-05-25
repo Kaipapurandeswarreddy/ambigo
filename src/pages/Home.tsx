@@ -1,4 +1,9 @@
 
+const AMBIGO_PLAY_STORE_URL =
+  'https://play.google.com/store/apps/details?id=in.ambigo.user';
+
+const bookNowButtonClass =
+  'w-full py-3 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl transition-colors text-sm inline-block text-center';
 
 const Home = () => {
   return (
@@ -294,9 +299,14 @@ const Home = () => {
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Advance Life Support</h3>
             <p className="text-slate-500 text-sm font-medium mb-6">Base Fare: ₹250</p>
-            <button className="w-full py-3 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl transition-colors text-sm">
+            <a
+              href={AMBIGO_PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={bookNowButtonClass}
+            >
               Book Now
-            </button>
+            </a>
           </div>
 
           {/* Card 2 */}
@@ -306,9 +316,14 @@ const Home = () => {
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Basic Life Support</h3>
             <p className="text-slate-500 text-sm font-medium mb-6">Base Fare: ₹280</p>
-            <button className="w-full py-3 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl transition-colors text-sm">
+            <a
+              href={AMBIGO_PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={bookNowButtonClass}
+            >
               Book Now
-            </button>
+            </a>
           </div>
 
           {/* Card 3 */}
@@ -318,9 +333,14 @@ const Home = () => {
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Patient Transport</h3>
             <p className="text-slate-500 text-sm font-medium mb-6">Base Fare: ₹600</p>
-            <button className="w-full py-3 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl transition-colors text-sm">
+            <a
+              href={AMBIGO_PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={bookNowButtonClass}
+            >
               Book Now
-            </button>
+            </a>
           </div>
 
           {/* Card 4 */}
@@ -330,9 +350,14 @@ const Home = () => {
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Car Cab</h3>
             <p className="text-slate-500 text-sm font-medium mb-6">Base Fare: ₹700</p>
-            <button className="w-full py-3 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl transition-colors text-sm">
+            <a
+              href={AMBIGO_PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={bookNowButtonClass}
+            >
               Book Now
-            </button>
+            </a>
           </div>
 
           {/* Card 5 */}
@@ -342,9 +367,14 @@ const Home = () => {
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2">Auto Rikshaw</h3>
             <p className="text-slate-500 text-sm font-medium mb-6">Base Fare: ₹200</p>
-            <button className="w-full py-3 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold rounded-xl transition-colors text-sm">
+            <a
+              href={AMBIGO_PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={bookNowButtonClass}
+            >
               Book Now
-            </button>
+            </a>
           </div>
 
         </div>

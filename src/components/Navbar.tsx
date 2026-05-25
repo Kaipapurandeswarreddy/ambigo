@@ -17,46 +17,50 @@ const Navbar = () => {
       ? "text-slate-900 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-slate-900"
       : "text-slate-600 hover:text-slate-900 transition-colors";
 
+  const logo = (
+    <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+      <div className="w-8 h-8 relative">
+        <div className="absolute top-0 left-2 w-3 h-3 bg-blue-500 rounded-full"></div>
+        <div className="absolute top-2 left-0 w-3 h-3 bg-blue-500 rounded-full"></div>
+        <div className="absolute top-4 left-2 w-3 h-3 bg-orange-400 rounded-full"></div>
+        <div className="absolute top-2 left-4 w-3 h-3 bg-blue-500 rounded-full"></div>
+      </div>
+      <span className="font-poppins font-extrabold text-xl tracking-tight text-slate-900">Ambigo</span>
+    </Link>
+  );
+
   return (
-    <nav className="absolute w-full z-50 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-5 sm:py-6 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-          {/* Custom SVG logo based on the image (4 blue/orange dots) */}
-          <div className="w-8 h-8 relative">
-            <div className="absolute top-0 left-2 w-3 h-3 bg-blue-500 rounded-full"></div>
-            <div className="absolute top-2 left-0 w-3 h-3 bg-blue-500 rounded-full"></div>
-            <div className="absolute top-4 left-2 w-3 h-3 bg-orange-400 rounded-full"></div>
-            <div className="absolute top-2 left-4 w-3 h-3 bg-blue-500 rounded-full"></div>
-          </div>
-          <span className="font-poppins font-extrabold text-xl tracking-tight text-slate-900">Ambigo</span>
-        </Link>
-        
-        {/* Links */}
-        <div className="hidden md:flex items-center gap-10 font-inter text-sm font-semibold">
-          {navItems.map((item) => (
-            <NavLink key={item.to} to={item.to} className={linkClass}>
-              {item.label}
-            </NavLink>
-          ))}
+    <nav className="ambigo-navbar absolute w-full z-50 bg-transparent">
+      <div className="ambigo-navbar__inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-5 sm:py-6">
+        <div className="ambigo-navbar__mobile">
+          <button
+            type="button"
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
+            onClick={() => setIsOpen((open) => !open)}
+            className="ambigo-navbar__menu-btn inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 bg-white/70 text-slate-900 shadow-sm backdrop-blur"
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+          <div className="ambigo-navbar__logo-wrap">{logo}</div>
         </div>
 
-        {/* Button */}
-        <div className="hidden md:block">
-          <a href="tel:+918985138102" className="inline-flex border-2 border-orange-400 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-2.5 rounded-full font-inter font-bold transition-all shadow-sm">
+        <div className="ambigo-navbar__desktop items-center justify-between">
+          {logo}
+          <div className="flex items-center gap-10 font-inter text-sm font-semibold">
+            {navItems.map((item) => (
+              <NavLink key={item.to} to={item.to} className={linkClass}>
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
+          <a
+            href="tel:+918985138102"
+            className="inline-flex border-2 border-orange-400 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-2.5 rounded-full font-inter font-bold transition-all shadow-sm"
+          >
             Call Now
           </a>
         </div>
-
-        <button
-          type="button"
-          aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={isOpen}
-          onClick={() => setIsOpen((open) => !open)}
-          className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200/80 bg-white/70 text-slate-900 shadow-sm backdrop-blur"
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
       </div>
 
       <div
