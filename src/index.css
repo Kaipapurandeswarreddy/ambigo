@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 @import "./old_styles.css";
 @import "tailwindcss";
+@import "./ambigo-visual-language.css";
 
 @theme {
   --font-poppins: 'Poppins', sans-serif;
@@ -83,6 +84,16 @@ svg,
 video,
 canvas {
   max-width: 100%;
+}
+
+/* Shared: hide horizontal scrollbars (carousels) */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge legacy */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .journey-shell {
@@ -970,9 +981,22 @@ canvas {
   border-color: rgba(148, 163, 184, 0.12) !important;
 }
 
-.journey-home > section > * {
+/* Do NOT force position:relative on all section children — it breaks absolute
+   glow backdrops/blobs and inflates section height by 1500px+ */
+.journey-home > section > .ambigo-container,
+.journey-home > section > .amb-saas-inner,
+.journey-home > section > .home-hero__inner {
   position: relative;
   z-index: 2;
+}
+
+.journey-home > section > .absolute,
+.journey-home > section > [aria-hidden='true'],
+.journey-home > section > .ambigo-glow-backdrop,
+.journey-home > section > .ambigo-section-glow,
+.journey-home > section > .amb-saas-blob {
+  position: absolute !important;
+  z-index: 0 !important;
 }
 
 .home-ambulance-type-grid {
@@ -1204,8 +1228,8 @@ canvas {
 }
 
 @media (max-width: 1180px) {
-  .journey-home section:not(:first-child) {
-    padding-block: 80px !important;
+  .journey-home section:not(:first-child):not(.amb-saas-section):not(.ambigo-app-showcase):not(.ambigo-why) {
+    padding-block: clamp(1.25rem, 3vw, 2rem) !important;
     padding-inline: 24px !important;
   }
 
@@ -1234,8 +1258,8 @@ canvas {
 }
 
 @media (max-width: 920px) {
-  .journey-home section:not(:first-child) {
-    padding-block: 68px !important;
+  .journey-home section:not(:first-child):not(.amb-saas-section):not(.ambigo-app-showcase):not(.ambigo-why) {
+    padding-block: clamp(1.25rem, 3vw, 2rem) !important;
     padding-inline: 20px !important;
   }
 
@@ -1346,11 +1370,11 @@ canvas {
   }
 
   .journey-home > section:first-child {
-    min-height: 92vh;
+    min-height: 0;
   }
 
-  .journey-home > section:not(:first-child) {
-    padding-block: 56px !important;
+  .journey-home > section:not(:first-child):not(.amb-saas-section):not(.ambigo-app-showcase) {
+    padding-block: 40px !important;
     padding-inline: 16px !important;
   }
 
@@ -1483,33 +1507,6 @@ canvas {
     line-height: 1.62 !important;
   }
 
-  .home-ambulance-type-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 14px !important;
-  }
-
-  .home-ambulance-type-grid > div {
-    border-radius: 20px !important;
-    padding: 16px !important;
-  }
-
-  .home-ambulance-type-grid > div > div:first-child {
-    height: 92px !important;
-    margin-bottom: 14px !important;
-  }
-
-  .home-ambulance-type-grid h3 {
-    font-size: 0.98rem !important;
-    line-height: 1.25 !important;
-  }
-
-  .home-ambulance-type-grid p {
-    margin-bottom: 14px !important;
-  }
-
-  .home-ambulance-type-grid button {
-    padding-block: 10px !important;
-  }
 
   .journey-terrain__layer {
     top: 35vh;
@@ -1550,11 +1547,6 @@ canvas {
 }
 
 @media (max-width: 520px) {
-  .home-ambulance-type-grid {
-    grid-template-columns: 1fr !important;
-    max-width: 360px;
-    margin-inline: auto;
-  }
 
   .journey-welcome {
     font-size: clamp(32px, 10vw, 44px);
@@ -1629,5 +1621,65 @@ canvas {
   .journey-welcome {
     transition: none !important;
     animation: none !important;
+  }
+}
+
+/* Orange card theme wins over legacy journey-home grid rules */
+.journey-home.ambigo-vl .ambigo-card,
+.journey-home.ambigo-vl .ambigo-stat-card {
+  border: 2px solid rgba(255, 140, 66, 0.45) !important;
+  box-shadow: 0 12px 36px rgba(255, 140, 66, 0.12), 0 8px 28px rgba(15, 23, 42, 0.06) !important;
+}
+
+.journey-home.ambigo-vl .ambigo-card:hover,
+.journey-home.ambigo-vl .ambigo-stat-card:hover,
+.journey-home.ambigo-vl .ambigo-benefit-card:hover {
+  border-color: #ff8c42 !important;
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 48px rgba(255, 140, 66, 0.22), 0 12px 32px rgba(15, 23, 42, 0.08) !important;
+}
+
+
+a.ambigo-service-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Home page: sections back-to-back, no blank viewport bands */
+.journey-home > section,
+.journey-home .ambigo-app-showcase,
+.journey-home .amb-saas-section,
+.journey-home .ambigo-why {
+  min-height: 0 !important;
+  height: auto !important;
+  padding-block: clamp(1.25rem, 3vw, 2rem) !important;
+}
+
+.journey-home > section > .ambigo-glow-backdrop,
+.journey-home > section > .ambigo-glow-backdrop--soft,
+.journey-home > section > .amb-saas-blob {
+  position: absolute !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.journey-home > section:first-child {
+  padding-top: 0 !important;
+  padding-bottom: clamp(1rem, 2vw, 1.5rem) !important;
+}
+
+.journey-home .hero-fade-up {
+  opacity: 1 !important;
+}
+
+.journey-home .amb-saas-card {
+  opacity: 1 !important;
+}
+
+/* Keep carousel scrolling smooth on touch without overriding all card layouts */
+@media (max-width: 767px) {
+  .journey-home .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 0.5rem;
   }
 }
