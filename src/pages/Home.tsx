@@ -159,7 +159,7 @@ const Home = () => {
 
               {/* Main Heading */}
               <h1 className="
-                text-[42px]
+                text-[38px]
                 sm:text-[48px]
                 lg:text-[40px]
                 xl:text-[44px]
@@ -174,7 +174,7 @@ const Home = () => {
               ">
                 Fast, Reliable
                 <br />
-                <span className="whitespace-nowrap">Ambulance Booking.</span>
+                <span className="sm:whitespace-nowrap">Ambulance Booking.</span>
               </h1>
 
               {/* Subtitle */}
