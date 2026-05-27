@@ -3,6 +3,9 @@ import AmbulanceServices from '../components/AmbulanceServices';
 import AppShowcase from '../components/AppShowcase';
 import TrustedPartners from '../components/TrustedPartners';
 import WhyChooseAmbigo from '../components/WhyChooseAmbigo';
+import AchievementsMarquee from '../components/AchievementsMarquee';
+import { LampContainer } from '../components/ui/lamp';
+import { motion } from 'framer-motion';
 
 const AMBIGO_PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=in.ambigo.user';
@@ -22,9 +25,7 @@ const Home = () => {
   const [priorityIdx, setPriorityIdx] = useState(0);
   const priorityRef = useRef<HTMLDivElement>(null);
 
-  // 4. Achievements Scrolling Gallery (9 items)
-  const [achIndex, setAchIndex] = useState(0);
-  const achRef = useRef<HTMLDivElement>(null);
+  
 
   // Reusable scroll handler for carousels
   const handleCarouselScroll = (
@@ -63,7 +64,7 @@ const Home = () => {
 
   // Enable "click + drag" scrolling for mouse users (especially in responsive mode).
   useEffect(() => {
-    const refs = [appFeaturesRef, healthTipsRef, priorityRef, achRef];
+    const refs = [appFeaturesRef, healthTipsRef, priorityRef];
 
     const cleanups: Array<() => void> = [];
 
@@ -718,247 +719,83 @@ const Home = () => {
       <TrustedPartners />
 
 
-      {/* --- AWARDS & ACHIEVEMENTS --- */}
-      <section className="ambigo-section bg-white" style={{ paddingInline: 0, overflowX: 'clip', overflowY: 'visible' }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-extrabold text-slate-900 mb-6">Prestigious Awards & Achievements</h2>
-            <p className="text-slate-500 text-lg">Recognized by the most esteemed organizations for our outstanding contribution to the healthcare sector.</p>
-          </div>
-
+            {/* --- AWARDS & ACHIEVEMENTS --- */}
+      <div className="bg-slate-50 w-full relative overflow-hidden flex flex-col items-center">
+        <LampContainer>
+          <motion.h1
+            initial={{ opacity: 0.5, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="py-4 text-center font-extrabold tracking-tight text-slate-900 mb-4"
+            style={{ fontSize: 'clamp(1.75rem, 5vw, 3.5rem)', marginTop: '2rem' }}
+          >
+            Prestigious Awards <br /> & Achievements
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-slate-600 text-center mb-16"
+            style={{ fontSize: 'clamp(0.9rem, 2vw, 1.125rem)', maxWidth: '48rem', paddingInline: '16px' }}
+          >
+            Recognized by the most esteemed organizations for our outstanding contribution to the healthcare sector.
+          </motion.p>
+        </LampContainer>
+        
+        <div className="bg-slate-50 pt-12 pb-20 mt-0 relative z-10 w-full flex flex-col items-center">
           {/* Wide Award Card - Light Theme with Glow */}
-          <div className="relative mb-20 max-w-5xl mx-auto group">
-            {/* Glow Effect Background */}
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-orange-200 via-orange-100 to-blue-200 rounded-[44px] blur-xl opacity-40 group-hover:opacity-70 transition duration-700"></div>
+          <div className="relative mb-20 max-w-3xl mx-auto group w-full px-4 md:px-8 perspective-1000">
+            {/* 3D Glow Effect Background */}
+            <div className="absolute inset-0 md:inset-4 bg-orange-500 rounded-[44px] blur-2xl opacity-10 group-hover:opacity-60 transition-all duration-700 ease-out group-hover:scale-105 group-hover:translate-y-4"></div>
             
-            <div className="bg-white p-8 md:p-12 rounded-[40px] shadow-xl flex flex-col md:flex-row items-center justify-between gap-10 relative overflow-hidden border border-slate-100/50 z-10">
-              {/* Decorative background cutouts */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-50/60 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50/60 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
-
-              <div className="flex-1 relative z-10 text-left">
-                <div className="bg-slate-50 border border-slate-100 rounded-2xl inline-flex items-center justify-center p-3 mb-6 shadow-sm">
-                  <img src="/apdts26.png" alt="Logo" className="h-10 object-contain" />
-                </div>
-                <p className="text-slate-500 text-sm mb-3 font-semibold uppercase tracking-wider">We are honored to be a</p>
-                <h3 className="text-3xl md:text-4xl font-extrabold mb-4 leading-tight text-slate-900">Student Innovator /<br />Campus Startup Award</h3>
-                <p className="text-orange-500 font-bold tracking-wide">#techpioneers25</p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 relative z-10 shrink-0">
-                <img src="/summit_ap.png" alt="Award 1" className="h-36 md:h-44 w-auto object-cover rounded-[16px] ambigo-glow-image" />
-                <img src="/summit_ap2.png" alt="Award 2" className="h-36 md:h-44 w-auto object-cover rounded-[16px] ambigo-glow-image" />
-              </div>
-            </div>
-          {/* Close max-w-7xl for the text/awards, open a full-width container for the gallery */}
-        </div>
-
-        {/* Scrolling Gallery of Cards - Full Width */}
-        <div className="relative w-full group/gallery">
-          {/* Desktop Navigation Arrows */}
-          <div className="hidden md:block">
-            <button
-              type="button"
-                onClick={() => {
-                  if (achRef.current) achRef.current.scrollBy({ left: -326, behavior: 'smooth' });
-                }}
-                className="absolute top-1/2 -translate-y-1/2 left-8 lg:left-16 z-30 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-[0_6px_20px_rgba(0,0,0,0.08)] border border-slate-100 flex items-center justify-center text-slate-700 hover:text-orange-500 hover:border-orange-200 hover:scale-110 active:scale-95 transition-all cursor-pointer opacity-80 hover:opacity-100"
-                aria-label="Scroll left"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  if (achRef.current) achRef.current.scrollBy({ left: 326, behavior: 'smooth' });
-                }}
-                className="absolute top-1/2 -translate-y-1/2 right-8 lg:right-16 z-30 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-[0_6px_20px_rgba(0,0,0,0.08)] border border-slate-100 flex items-center justify-center text-slate-700 hover:text-orange-500 hover:border-orange-200 hover:scale-110 active:scale-95 transition-all cursor-pointer opacity-80 hover:opacity-100"
-                aria-label="Scroll right"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-
             <div 
-              ref={achRef}
-              onScroll={() => handleCarouselScroll(achRef, setAchIndex, 9, 24)}
-              className="flex flex-row flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 pb-16 pt-4 items-stretch hide-scrollbar cursor-grab active:cursor-grabbing"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+              className="bg-white/90 backdrop-blur-md relative overflow-hidden border border-orange-100 z-10 w-full awards-main-card transition-all duration-500 ease-out group-hover:-translate-y-4 group-hover:shadow-[0_40px_80px_rgba(249,115,22,0.2)]"
+              style={{ 
+                padding: '24px', 
+                borderRadius: '24px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '24px',
+                boxShadow: '0 15px 40px rgba(0,0,0,0.06)',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              {/* Left edge spacer: dynamically matches max-w-7xl mx-auto px-6 lg:px-12 alignment */}
-              <div className="shrink-0" style={{ width: 'calc(max(1.5rem, (100vw - 1280px) / 2 + max(1.5rem, 3vw)))' }} aria-hidden="true"></div>
+              {/* Decorative background cutouts */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
 
-              {/* Card 1: AIC-SKU */}
-              <div className="relative w-10/12 max-w-[320px] md:w-[300px] flex-shrink-0 snap-center group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-orange-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white p-7 rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] flex flex-col items-start text-left relative z-10 h-full">
-                  <div className="h-14 w-full flex justify-start items-center mb-5">
-                    <img src="/aic_sku.png" alt="AIC SKU" className="h-full max-w-[100px] object-contain" />
-                  </div>
-                  <p className="text-[9px] font-black text-orange-500 uppercase tracking-widest mb-2">INCUBATED AT AIC-SKU</p>
-                  <h4 className="font-extrabold text-slate-900 text-base mb-2 leading-tight group-hover:text-blue-600 transition-colors">Selected and incubated at the Atal Incubation Centre (AIC)</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed mt-auto pt-2">Gaining expert mentorship, guidance, and ecosystem support to grow faster.</p>
+              <div className="relative z-10 awards-main-card__text">
+                <div 
+                  className="bg-slate-50 border border-slate-100 inline-flex items-center justify-center shadow-sm"
+                  style={{ padding: '12px', borderRadius: '16px', marginBottom: '16px' }}
+                >
+                  <img src="/apdts26.png" alt="Logo" style={{ height: '40px', objectFit: 'contain' }} />
                 </div>
+                <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>We are honored to be a</p>
+                <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.75rem)', fontWeight: 800, marginBottom: '14px', lineHeight: 1.15, color: '#0f172a' }}>Student Innovator /<br />Campus Startup Award</h3>
+                <p style={{ color: '#f97316', fontWeight: 700, letterSpacing: '0.05em', fontSize: '1.1rem' }}>#techpioneers25</p>
               </div>
 
-              {/* Card 2: RTIH */}
-              <div className="relative md:w-[300px] w-10/12 max-w-[320px] snap-center shrink-0 group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-orange-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white p-7 rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] flex flex-col items-start text-left relative z-10 h-full">
-                  <div className="h-14 w-full flex justify-start items-center mb-5">
-                    <img src="/rtih.jpg" alt="RTIH" className="h-full max-w-[100px] object-contain" />
-                  </div>
-                  <p className="text-[9px] font-black text-orange-500 uppercase tracking-widest mb-2">RECOGNIZED AS</p>
-                  <h4 className="font-extrabold text-slate-900 text-base mb-2 leading-tight group-hover:text-blue-600 transition-colors">RTIH - TATA Innovation Hub, Anantapur</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed mt-auto pt-2">Office space at RTIH - TATA Innovation Hub, Anantapur.</p>
-                </div>
+              <div 
+                className="relative z-10 awards-main-card__images"
+                style={{ display: 'flex', gap: '12px' }}
+              >
+                <img src="/summit_ap.png" alt="Award 1" style={{ borderRadius: '16px' }} />
+                <img src="/summit_ap2.png" alt="Award 2" style={{ borderRadius: '16px' }} />
               </div>
-
-              {/* Card 3: ETV Bharath */}
-              <div className="relative md:w-[300px] w-10/12 max-w-[320px] snap-center shrink-0 group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-blue-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col relative z-10 h-full">
-                  <div className="relative overflow-hidden h-40 p-3 pb-0 shrink-0">
-                    <img src="/etv_bharath.png" alt="ETV Bharath" className="w-full h-full object-cover rounded-t-[22px] rounded-b-sm group-hover:scale-105 transition-transform duration-700 ambigo-glow-image" />
-                    <div className="absolute top-6 right-6 bg-slate-900/80 backdrop-blur-sm text-white text-[9px] font-bold px-2.5 py-1 rounded-full tracking-widest uppercase">
-                      RECOGNITION
-                    </div>
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <h4 className="font-extrabold text-slate-900 text-lg mb-1 group-hover:text-blue-600 transition-colors">ETV Bharath</h4>
-                    <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3">RECOGNITION FOR INNOVATION</p>
-                    <p className="text-slate-500 leading-relaxed text-xs">Andhra Student Develops 'Ambigo', One Stop Healthcare App For Ambulance, Cabs, And Medical Help.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 4: IIC Award */}
-              <div className="relative md:w-[300px] w-10/12 max-w-[320px] snap-center shrink-0 group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-blue-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col relative z-10 h-full">
-                  <div className="relative overflow-hidden h-40 p-3 pb-0 shrink-0">
-                    <img src="/acheive1.jpg" alt="IIC Award" className="w-full h-full object-cover rounded-t-[22px] rounded-b-sm group-hover:scale-105 transition-transform duration-700 ambigo-glow-image" />
-                    <div className="absolute top-6 right-6 bg-slate-900/80 backdrop-blur-sm text-white text-[9px] font-bold px-2.5 py-1 rounded-full tracking-widest uppercase">
-                      AWARD
-                    </div>
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <h4 className="font-extrabold text-slate-900 text-lg mb-1 group-hover:text-blue-600 transition-colors line-clamp-2">Ambigo by IIC-Ministry of Education Institute</h4>
-                    <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3">INNOVATION CELL (IIC) RECOGNITION</p>
-                    <p className="text-slate-500 leading-relaxed text-xs line-clamp-4">Ambigo has secured 02 in the Jntua IIC Startup competition conducted on 17 september 2025, organized by the Institution's Innovation Council (IIC).</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 5: Surya News */}
-              <div className="relative md:w-[300px] w-10/12 max-w-[320px] snap-center shrink-0 group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-blue-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col relative z-10 h-full">
-                  <div className="relative overflow-hidden h-40 p-3 pb-0 shrink-0">
-                    <img src="/surya_news.png" alt="Surya News" className="w-full h-full object-cover rounded-t-[22px] rounded-b-sm group-hover:scale-105 transition-transform duration-700 ambigo-glow-image" />
-                    <div className="absolute top-6 right-6 bg-slate-900/80 backdrop-blur-sm text-white text-[9px] font-bold px-2.5 py-1 rounded-full tracking-widest uppercase">
-                      AWARD
-                    </div>
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <h4 className="font-extrabold text-slate-900 text-lg mb-1 group-hover:text-blue-600 transition-colors">Surya News</h4>
-                    <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3">RECOGNITION FOR STARTUP</p>
-                    <p className="text-slate-500 leading-relaxed text-xs line-clamp-4">The Surya News highlighted Ambigo's innovative healthcare solutions, recognizing its impact on improving access to medical services and emergency response in the region.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 6: Google Cloud */}
-              <div className="relative md:w-[300px] w-10/12 max-w-[320px] snap-center shrink-0 group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-orange-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white p-7 rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] flex flex-col items-start text-left relative z-10 h-full">
-                  <div className="h-14 w-full flex justify-start items-center mb-5">
-                    <img src="/google_cloud.jpg" alt="Google Cloud" className="h-full max-w-[100px] object-contain" />
-                  </div>
-                  <p className="text-[9px] font-black text-orange-500 uppercase tracking-widest mb-2">STARTUP CREDITS FROM GOOGLE CLOUD</p>
-                  <h4 className="font-extrabold text-slate-900 text-base mb-2 leading-tight group-hover:text-blue-600 transition-colors">Worth USD $2,000</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed mt-auto pt-2">Enabling Ambigo to build, test, and scale its technology infrastructure with enterprise-grade cloud services.</p>
-                </div>
-              </div>
-
-              {/* Card 7: DPIIT */}
-              <div className="relative md:w-[300px] w-10/12 max-w-[320px] snap-center shrink-0 group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-orange-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white p-7 rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] flex flex-col items-start text-left relative z-10 h-full">
-                  <div className="h-14 w-full flex justify-start items-center mb-5">
-                    <img src="/dpiit.png" alt="DPIIT" className="h-full max-w-[100px] object-contain" />
-                  </div>
-                  <p className="text-[9px] font-black text-orange-500 uppercase tracking-widest mb-2">RECOGNIZED BY</p>
-                  <h4 className="font-extrabold text-slate-900 text-base mb-2 leading-tight group-hover:text-blue-600 transition-colors">Recognized by Startup India</h4>
-                  <p className="text-xs text-slate-500 leading-relaxed mt-auto pt-2">Successfully registered and certified under the Startup India initiative.</p>
-                </div>
-              </div>
-
-              {/* Card 8: MSME */}
-              <div className="relative md:w-[300px] w-10/12 max-w-[320px] snap-center shrink-0 group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-blue-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col relative z-10 h-full">
-                  <div className="relative overflow-hidden h-40 p-3 pb-0 flex items-center justify-center shrink-0">
-                    <img src="/msme_logo.jpeg" alt="MSME Logo" className="h-full object-contain group-hover:scale-105 transition-transform duration-700 p-4" />
-                    <div className="absolute top-6 right-6 bg-slate-900/80 backdrop-blur-sm text-white text-[9px] font-bold px-2.5 py-1 rounded-full tracking-widest uppercase">
-                      RECOGNITION
-                    </div>
-                  </div>
-                  <div className="p-6 border-t border-slate-50 flex flex-col flex-1">
-                    <h4 className="font-extrabold text-slate-900 text-lg mb-1 group-hover:text-blue-600 transition-colors">Udayam / MSME Registration</h4>
-                    <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3">TIMES BUSINESS AWARDS</p>
-                    <p className="text-slate-500 leading-relaxed text-xs">Officially registered under the Udyam MSME framework, giving us credibility, government recognition, and access to support schemes.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 9: JNTU Sakshi */}
-              <div className="relative md:w-[300px] w-10/12 max-w-[320px] snap-center shrink-0 group flex flex-col">
-                <div className="absolute -inset-1 bg-gradient-to-b from-blue-200/50 to-transparent rounded-[34px] blur-md opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                <div className="bg-white rounded-[32px] border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col relative z-10 h-full">
-                  <div className="relative overflow-hidden h-40 p-3 pb-0 shrink-0">
-                    <img src="/jntu_sakshi.png" alt="JNTU Sakshi" className="w-full h-full object-cover object-top rounded-t-[22px] rounded-b-sm group-hover:scale-105 transition-transform duration-700 ambigo-glow-image" />
-                    <div className="absolute top-6 right-6 bg-slate-900/80 backdrop-blur-sm text-white text-[9px] font-bold px-2.5 py-1 rounded-full tracking-widest uppercase">
-                      AWARD
-                    </div>
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <h4 className="font-extrabold text-slate-900 text-lg mb-1 group-hover:text-blue-600 transition-colors line-clamp-2">Appreciation for Excellence</h4>
-                    <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3">RECOGNITION BY JNTUA OFFICIALS</p>
-                    <p className="text-slate-500 leading-relaxed text-xs">Receiving top-tier recognition and appreciation from the esteemed officials of Jawaharlal Nehru Technological University Anantapur.</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right edge spacer to prevent last card from touching the screen edge */}
-              <div className="shrink-0" style={{ width: 'calc(max(1.5rem, (100vw - 1280px) / 2 + max(1.5rem, 3vw)))' }} aria-hidden="true"></div>
-
             </div>
           </div>
 
-          {/* Dots Navigation */}
-          <div className="flex flex-row justify-center items-center gap-[6px] -mt-8 mb-6">
-            {Array.from({ length: 9 }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => scrollCarouselTo(achRef, idx, 24)}
-                className={`h-[7px] rounded-full border-0 p-0 cursor-pointer transition-all duration-300 ${
-                  achIndex === idx
-                    ? 'w-5 bg-[#ff8c42] shadow-[0_0_10px_rgba(255,140,66,0.5)]'
-                    : 'w-[7px] bg-slate-300 hover:bg-slate-400'
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
+          {/* Scrolling Gallery of Cards - Full Width */}
+          <div className="relative w-full group/gallery pb-12">
+            <AchievementsMarquee />
           </div>
-
         </div>
-      </section>    </div>
+      </div>    </div>
   );
 };
 

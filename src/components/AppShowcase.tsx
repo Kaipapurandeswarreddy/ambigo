@@ -22,7 +22,26 @@ const screens = [
       </>
     ),
   },
+  {
+    src: '/app-screenshot-3.jpg',
+    alt: 'Ambigo app screenshot 3',
+    caption: (
+      <>
+        Fast & <strong>Reliable</strong>
+      </>
+    ),
+  },
+  {
+    src: '/app-screenshot-4.jpg',
+    alt: 'Ambigo app screenshot 4',
+    caption: (
+      <>
+        Seamless <strong>Experience</strong>
+      </>
+    ),
+  },
 ];
+
 
 const AppShowcase = () => {
   const scrollRef = useRef<HTMLDivElement>(null);

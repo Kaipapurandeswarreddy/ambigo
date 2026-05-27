@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 
 type Benefit = {
   title: string;
@@ -54,6 +54,27 @@ const benefits: Benefit[] = [
 ];
 
 const WhyChooseAmbigo = () => {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="ambigo-why ambigo-section ambigo-section-panel px-6 lg:px-12 relative z-20">
       <div className="ambigo-section-glow" aria-hidden="true" />
@@ -65,15 +86,19 @@ const WhyChooseAmbigo = () => {
         </div>
 
         <div className="ambigo-bento">
-          <div className="ambigo-featured-panel">
+          <div ref={panelRef} className={`ambigo-featured-panel ${isVisible ? 'is-visible' : ''}`}>
             <h3 className="ambigo-featured-panel__title">Trusted by India&apos;s families</h3>
             <p className="ambigo-featured-panel__lead">
               Every crew member is verified and trained before their first booking — so you get dependable
               ambulance support in emergencies.
             </p>
             <div className="ambigo-featured-panel__stats">
-              {stats.map((stat) => (
-                <div key={stat.label} className="ambigo-featured-stat">
+              {stats.map((stat, index) => (
+                <div 
+                  key={stat.label} 
+                  className="ambigo-featured-stat"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
                   <span className="ambigo-featured-stat__value">{stat.value}</span>
                   <span className="ambigo-featured-stat__label">{stat.label}</span>
                 </div>

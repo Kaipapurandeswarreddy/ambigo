@@ -23,14 +23,62 @@
   --ambigo-radius-pill: 9999px;
   --ambigo-container: 80rem;
   --ambigo-section-y: clamp(3.5rem, 8vw, 6rem);
-  --ambigo-font: 'Poppins', sans-serif;
+  --ambigo-font: 'Figtree', sans-serif;
+  --ambigo-font-body: 'Noto Sans', sans-serif;
+}
+
+/* ── Premium Neumorphic Effects ── */
+.ambigo-neu-card {
+  background: var(--ambigo-surface);
+  box-shadow: 
+    12px 12px 24px rgba(15, 23, 42, 0.05),
+    -12px -12px 24px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: var(--ambigo-radius-card);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ambigo-neu-card:hover {
+  box-shadow: 
+    16px 16px 32px rgba(15, 23, 42, 0.08),
+    -16px -16px 32px rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
+}
+
+.ambigo-neu-inset {
+  background: var(--ambigo-surface);
+  box-shadow: 
+    inset 6px 6px 12px rgba(15, 23, 42, 0.06),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+}
+
+.ambigo-neu-btn {
+  background: var(--ambigo-accent);
+  box-shadow: 
+    6px 6px 12px rgba(255, 140, 66, 0.35),
+    -6px -6px 12px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.ambigo-neu-btn:hover {
+  box-shadow: 
+    8px 8px 16px rgba(255, 140, 66, 0.4),
+    -8px -8px 16px rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+}
+
+.ambigo-neu-btn:active {
+  box-shadow: 
+    inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.2);
+  transform: translateY(1px);
 }
 
 /* ── Base canvas ── */
 .ambigo-vl,
 .journey-shell,
 .ambigo-subpage-shell {
-  font-family: var(--ambigo-font);
+  font-family: var(--ambigo-font-body);
   color: var(--ambigo-text);
   background-color: var(--ambigo-canvas);
 }
@@ -55,6 +103,15 @@
 }
 
 /* ── Typography scale ── */
+h1, h2, h3, h4, h5, h6,
+.font-poppins,
+.font-extrabold,
+.font-bold,
+.ambigo-section-title,
+.ambigo-eyebrow {
+  font-family: var(--ambigo-font);
+}
+
 .ambigo-eyebrow {
   display: block;
   font-size: 0.72rem;
@@ -183,6 +240,8 @@
   background: linear-gradient(145deg, #ff9a52 0%, #ff7a2f 48%, #ff6b21 100%);
   color: #fff;
   box-shadow:
+    inset 2px 2px 8px rgba(255, 255, 255, 0.4),
+    inset -2px -2px 8px rgba(0, 0, 0, 0.2),
     0 28px 60px rgba(255, 107, 33, 0.35),
     0 12px 32px rgba(255, 140, 66, 0.2);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
@@ -191,6 +250,8 @@
 .ambigo-featured-panel:hover {
   transform: translateY(-6px);
   box-shadow:
+    inset 2px 2px 8px rgba(255, 255, 255, 0.5),
+    inset -2px -2px 8px rgba(0, 0, 0, 0.25),
     0 36px 72px rgba(255, 107, 33, 0.4),
     0 16px 40px rgba(255, 140, 66, 0.28);
 }
@@ -220,18 +281,38 @@
   margin-top: auto;
 }
 
-.ambigo-featured-stat {
-  padding: 1rem 1.1rem;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(8px);
-  text-align: left;
-  transition: background 0.3s ease, transform 0.3s ease;
+@keyframes slideUpFadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-.ambigo-featured-panel:hover .ambigo-featured-stat {
-  background: rgba(255, 255, 255, 0.18);
+.ambigo-featured-stat {
+  padding: 1.25rem 1.1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 
+    8px 8px 16px rgba(15, 23, 42, 0.08),
+    -8px -8px 16px rgba(255, 255, 255, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 0;
+}
+
+.is-visible .ambigo-featured-stat {
+  animation: slideUpFadeIn 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.ambigo-featured-stat:hover {
+  transform: translateY(-4px) scale(1.02);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    12px 12px 24px rgba(15, 23, 42, 0.12),
+    -12px -12px 24px rgba(255, 255, 255, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
 }
 
 .ambigo-featured-stat__value {
@@ -272,9 +353,12 @@
   text-align: left;
   padding: 1.35rem 1.25rem;
   border-radius: 24px;
-  background: linear-gradient(165deg, #ffffff 0%, #fffbf7 100%);
-  border: 2px solid var(--ambigo-border-orange);
-  box-shadow: var(--ambigo-shadow);
+  background: var(--ambigo-surface);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    12px 12px 24px rgba(15, 23, 42, 0.05),
+    -12px -12px 24px rgba(255, 255, 255, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.95) inset;
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s ease,
@@ -284,8 +368,11 @@
 
 .ambigo-benefit-card:hover {
   transform: translateY(-8px);
-  border-color: var(--ambigo-border-orange-strong);
-  box-shadow: var(--ambigo-shadow-hover);
+  border-color: #ffffff;
+  box-shadow:
+    16px 16px 32px rgba(15, 23, 42, 0.08),
+    -16px -16px 32px rgba(255, 255, 255, 1),
+    0 1px 0 rgba(255, 255, 255, 1) inset;
 }
 
 .ambigo-benefit-card__icon {
@@ -483,12 +570,12 @@
   border-radius: 22px;
   text-decoration: none;
   color: inherit;
-  background: linear-gradient(165deg, #ffffff 0%, #fffdfb 48%, #fff8f2 100%);
-  border: 1px solid rgba(255, 140, 66, 0.22);
+  background: var(--ambigo-surface);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.95) inset,
-    0 8px 24px rgba(15, 23, 42, 0.04),
-    0 4px 16px rgba(255, 140, 66, 0.06);
+    12px 12px 24px rgba(15, 23, 42, 0.05),
+    -12px -12px 24px rgba(255, 255, 255, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.95) inset;
   opacity: 1;
   transform: translateY(0);
   transition:
@@ -524,11 +611,11 @@
 
 .amb-saas-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 140, 66, 0.42);
+  border-color: rgba(255, 255, 255, 1);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 1) inset,
-    0 20px 40px rgba(255, 140, 66, 0.14),
-    0 10px 28px rgba(15, 23, 42, 0.06);
+    16px 16px 32px rgba(255, 140, 66, 0.12),
+    -16px -16px 32px rgba(255, 255, 255, 1),
+    0 1px 0 rgba(255, 255, 255, 1) inset;
 }
 
 .amb-saas-card--visible:hover {
@@ -1166,6 +1253,14 @@
     0 0 0 1px rgba(255, 255, 255, 0.08) inset,
     0 14px 32px rgba(15, 23, 42, 0.22),
     0 0 28px rgba(255, 140, 66, 0.18);
+}
+
+.ambigo-store-badge:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.5),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+  transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .ambigo-store-badge__icon {
@@ -1830,15 +1925,15 @@
   padding: 0.5rem clamp(0.5rem, 2vw, 1rem);
 }
 
-/* Two phone mockups — Snabbit-style floating devices (no card box) */
+/* Four phone mockups — Premium staggered floating devices */
 .ambigo-phone-showcase {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: clamp(1.25rem, 4vw, 2rem);
+  gap: clamp(1rem, 3vw, 1.5rem);
   position: relative;
   z-index: 1;
-  max-width: 32rem;
+  max-width: 100%; /* Ensure it spans fully on desktop */
   margin-inline: auto;
   padding: 0.5rem clamp(0.5rem, 2vw, 1rem) 0;
 }
@@ -1849,6 +1944,7 @@
   flex-direction: column;
   align-items: center;
   min-width: 0;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), z-index 0.5s ease;
 }
 
 .ambigo-phone-showcase__item--featured {
@@ -1876,6 +1972,91 @@
   font-weight: 800;
 }
 
+@media (min-width: 768px) {
+  .ambigo-phone-showcase {
+    gap: 1.5rem; /* Clean spacing, no overlap */
+    padding-top: 3rem; 
+    max-width: 76rem; /* Plenty of room for 4 phones */
+    align-items: flex-end;
+  }
+
+  /* Clean 4-item stagger with NO negative margins */
+  .ambigo-phone-showcase__item:nth-child(1) {
+    transform: translateY(40px) scale(0.9);
+    z-index: 1;
+  }
+  
+  .ambigo-phone-showcase__item:nth-child(2) {
+    transform: translateY(0px) scale(1.05);
+    z-index: 3;
+  }
+  
+  .ambigo-phone-showcase__item:nth-child(3) {
+    transform: translateY(0px) scale(1.05);
+    z-index: 4;
+  }
+  
+  .ambigo-phone-showcase__item:nth-child(4) {
+    transform: translateY(40px) scale(0.9);
+    z-index: 1;
+  }
+
+  /* Add the premium Theme Color Glow and Border to ALL phones */
+  .ambigo-phone-showcase__item .ambigo-phone-mockup {
+    border-color: var(--ambigo-accent);
+    box-shadow: 
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+      0 0 0 2px var(--ambigo-accent),
+      0 20px 50px rgba(249, 115, 22, 0.25),
+      0 0 60px rgba(249, 115, 22, 0.15);
+  }
+
+  /* Make the elevated center phones' glow slightly more intense */
+  .ambigo-phone-showcase__item:nth-child(2) .ambigo-phone-mockup,
+  .ambigo-phone-showcase__item:nth-child(3) .ambigo-phone-mockup {
+    box-shadow: 
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+      0 0 0 2px var(--ambigo-accent),
+      0 20px 50px rgba(249, 115, 22, 0.35),
+      0 0 80px rgba(249, 115, 22, 0.2);
+  }
+
+  /* Hover effects */
+  .ambigo-phone-showcase:hover .ambigo-phone-showcase__item {
+    filter: brightness(0.9) grayscale(20%);
+  }
+  
+  .ambigo-phone-showcase .ambigo-phone-showcase__item:hover {
+    transform: translateY(-20px) scale(1.15) !important;
+    z-index: 10 !important;
+    filter: brightness(1) grayscale(0%);
+  }
+
+  /* Plain text captions, like Snabbit (No bubbles/badges) */
+  .ambigo-phone-showcase__caption {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 1.5rem; /* Space between text and phone */
+    font-size: 1.15rem;
+    white-space: normal; /* Allow wrapping if needed */
+    width: 100%;
+    color: #0f172a;
+    transition: all 0.3s ease;
+    backdrop-filter: none;
+  }
+
+  .ambigo-phone-showcase__item:hover .ambigo-phone-showcase__caption {
+    transform: translateY(-5px);
+  }
+
+  .ambigo-phone-showcase__caption strong {
+    color: #f97316;
+    margin-left: 0.25em;
+  }
+}
+
 .ambigo-phone-showcase__item--featured .ambigo-phone-showcase__caption {
   font-size: inherit;
 }
@@ -1896,14 +2077,13 @@
   flex-shrink: 0;
   border-radius: 28px;
   overflow: hidden;
-  background: #f8fafc;
-  border: 2.5px solid rgba(255, 140, 66, 0.55);
+  background: var(--ambigo-surface);
+  border: 4px solid #ffffff;
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.85) inset,
-    0 0 32px rgba(255, 140, 66, 0.28),
-    0 0 16px rgba(255, 140, 66, 0.15),
-    0 20px 40px rgba(255, 140, 66, 0.12),
-    0 10px 24px rgba(15, 23, 42, 0.08);
+    inset 0 0 0 2px rgba(255, 140, 66, 0.3),
+    16px 16px 32px rgba(15, 23, 42, 0.08),
+    -16px -16px 32px rgba(255, 255, 255, 0.9),
+    0 0 32px rgba(255, 140, 66, 0.15);
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.35s ease,
@@ -1927,13 +2107,12 @@
 
 .ambigo-phone-mockup:hover {
   transform: translateY(-6px);
-  border-color: var(--ambigo-accent);
+  border-color: #ffffff;
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.9) inset,
-    0 0 40px rgba(255, 140, 66, 0.35),
-    0 0 20px rgba(255, 140, 66, 0.2),
-    0 24px 48px rgba(255, 140, 66, 0.16),
-    0 12px 28px rgba(15, 23, 42, 0.1);
+    inset 0 0 0 2px rgba(255, 140, 66, 0.5),
+    20px 20px 40px rgba(15, 23, 42, 0.12),
+    -20px -20px 40px rgba(255, 255, 255, 1),
+    0 0 40px rgba(255, 140, 66, 0.25);
 }
 
 /* Legacy float-card (unused by AppShowcase) — keep for compatibility */
