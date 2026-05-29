@@ -9,19 +9,19 @@ const Terms = () => {
       <div className="termsContainer max-w-5xl mx-auto px-4 py-8">
         <div className="termstabs flex flex-col md:flex-row gap-4 mb-8">
           <button 
-            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all ${activeTab === 'terms' ? 'bg-[#ff7a2f] text-white shadow-lg' : 'bg-white text-slate-600 border border-slate-200 hover:border-[#ff7a2f]'}`}
+            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all ${activeTab === 'terms' ? 'active shadow-lg' : 'border border-slate-200'}`}
             onClick={() => setActiveTab('terms')}
           >
             Terms &amp; Conditions
           </button>
           <button 
-            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all ${activeTab === 'privacy' ? 'bg-[#ff7a2f] text-white shadow-lg' : 'bg-white text-slate-600 border border-slate-200 hover:border-[#ff7a2f]'}`}
+            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all ${activeTab === 'privacy' ? 'active shadow-lg' : 'border border-slate-200'}`}
             onClick={() => setActiveTab('privacy')}
           >
             Privacy Policy
           </button>
           <button 
-            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all ${activeTab === 'legal' ? 'bg-[#ff7a2f] text-white shadow-lg' : 'bg-white text-slate-600 border border-slate-200 hover:border-[#ff7a2f]'}`}
+            className={`flex-1 py-3 px-6 rounded-full font-bold transition-all ${activeTab === 'legal' ? 'active shadow-lg' : 'border border-slate-200'}`}
             onClick={() => setActiveTab('legal')}
           >
             Legal Considerations

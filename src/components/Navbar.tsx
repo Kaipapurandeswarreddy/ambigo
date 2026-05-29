@@ -23,12 +23,7 @@ const Navbar = () => {
 
   const logo = (
     <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-      <div className="w-8 h-8 relative">
-        <div className="absolute top-0 left-2 w-3 h-3 bg-[#ffb380] rounded-full"></div>
-        <div className="absolute top-2 left-0 w-3 h-3 bg-[#ff9f5c] rounded-full"></div>
-        <div className="absolute top-4 left-2 w-3 h-3 bg-[#ff8c42] rounded-full"></div>
-        <div className="absolute top-2 left-4 w-3 h-3 bg-[#ff9f5c] rounded-full"></div>
-      </div>
+      <img src="/images/ambulance6.png" alt="Ambigo Logo" className="h-10 w-auto object-contain" />
       <span className="font-poppins font-extrabold text-xl tracking-tight text-slate-900">Ambigo</span>
     </Link>
   );

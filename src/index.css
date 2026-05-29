@@ -619,6 +619,7 @@ canvas {
 .ambigo-subpage-shell .ERSright,
 .ambigo-subpage-shell .hoscontent-text {
   min-width: 0;
+  max-width: 100% !important;
 }
 
 .ambigo-subpage-shell .historyintroleft h1,

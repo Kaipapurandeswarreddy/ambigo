@@ -178,9 +178,9 @@ h1, h2, h3, h4, h5, h6,
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(ellipse 75% 60% at 50% 35%, rgba(255, 140, 66, 0.16), transparent 68%),
-    radial-gradient(ellipse 45% 50% at 15% 80%, rgba(255, 200, 160, 0.12), transparent 72%),
-    radial-gradient(ellipse 40% 45% at 88% 75%, rgba(255, 180, 130, 0.1), transparent 70%);
+    radial-gradient(ellipse 80% 70% at 30% 50%, rgba(255, 140, 66, 0.45), transparent 75%),
+    radial-gradient(ellipse 60% 60% at 80% 60%, rgba(255, 140, 66, 0.3), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 50% 20%, rgba(255, 180, 130, 0.25), transparent 60%);
 }
 
 .ambigo-section-panel > :not(.ambigo-section-glow):not(svg) {
@@ -237,23 +237,24 @@ h1, h2, h3, h4, h5, h6,
   flex-direction: column;
   padding: clamp(1.5rem, 3vw, 2rem);
   border-radius: 28px;
-  background: linear-gradient(145deg, #ff9a52 0%, #ff7a2f 48%, #ff6b21 100%);
-  color: #fff;
+  background: var(--ambigo-surface);
+  color: var(--ambigo-text);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow:
-    inset 2px 2px 8px rgba(255, 255, 255, 0.4),
-    inset -2px -2px 8px rgba(0, 0, 0, 0.2),
-    0 28px 60px rgba(255, 107, 33, 0.35),
-    0 12px 32px rgba(255, 140, 66, 0.2);
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+    0 12px 48px rgba(255, 140, 66, 0.35),
+    12px 12px 24px rgba(15, 23, 42, 0.05),
+    -12px -12px 24px rgba(255, 255, 255, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.95) inset;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
 }
 
 .ambigo-featured-panel:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow:
-    inset 2px 2px 8px rgba(255, 255, 255, 0.5),
-    inset -2px -2px 8px rgba(0, 0, 0, 0.25),
-    0 36px 72px rgba(255, 107, 33, 0.4),
-    0 16px 40px rgba(255, 140, 66, 0.28);
+    0 16px 64px rgba(255, 140, 66, 0.45),
+    16px 16px 32px rgba(15, 23, 42, 0.07),
+    -16px -16px 32px rgba(255, 255, 255, 1),
+    0 1px 0 #ffffff inset;
 }
 
 .ambigo-featured-panel__title {
@@ -262,13 +263,14 @@ h1, h2, h3, h4, h5, h6,
   line-height: 1.15;
   margin-bottom: 0.75rem;
   text-align: left;
+  color: var(--ambigo-text);
 }
 
 .ambigo-featured-panel__lead {
   font-size: 0.92rem;
   font-weight: 500;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--ambigo-text-secondary);
   margin-bottom: 1.5rem;
   text-align: left;
   max-width: 36ch;
@@ -289,14 +291,11 @@ h1, h2, h3, h4, h5, h6,
 .ambigo-featured-stat {
   padding: 1.25rem 1.1rem;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--ambigo-canvas);
+  border: 1px solid rgba(15, 23, 42, 0.03);
   box-shadow: 
-    8px 8px 16px rgba(15, 23, 42, 0.08),
-    -8px -8px 16px rgba(255, 255, 255, 0.4),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    inset 2px 2px 5px rgba(15, 23, 42, 0.02),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.8);
   text-align: left;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   opacity: 0;
@@ -307,12 +306,11 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .ambigo-featured-stat:hover {
-  transform: translateY(-4px) scale(1.02);
-  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  background: var(--ambigo-surface);
   box-shadow: 
-    12px 12px 24px rgba(15, 23, 42, 0.12),
-    -12px -12px 24px rgba(255, 255, 255, 0.6),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    4px 4px 12px rgba(15, 23, 42, 0.04),
+    -4px -4px 12px rgba(255, 255, 255, 0.8);
 }
 
 .ambigo-featured-stat__value {
@@ -321,16 +319,16 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 800;
   line-height: 1;
   margin-bottom: 0.35rem;
+  color: var(--ambigo-accent);
 }
 
 .ambigo-featured-stat__label {
   display: block;
   font-size: 0.68rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
-  line-height: 1.35;
+  color: var(--ambigo-text);
 }
 
 .ambigo-benefit-grid {
@@ -1401,7 +1399,8 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .ambigo-footer-vl .ambigo-social-btn:hover {
-  background: var(--ambigo-accent) !important;
+  background: var(--ambigo-text) !important;
+  color: #fff !important;
 }
 
 /* ── Journey home: unify sections to visual language ── */
