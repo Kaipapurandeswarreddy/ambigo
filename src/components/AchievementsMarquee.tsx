@@ -138,12 +138,14 @@ const AchievementsMarquee = () => {
               </>
             ) : (
               <>
-                <div className="w-full flex justify-start items-center" style={{ height: '48px', marginBottom: '12px' }}>
-                  <img src={item.imgSrc} alt={item.imgAlt} style={{ height: '100%', maxWidth: '100px', objectFit: 'contain' }} />
+                <div className="w-full flex justify-center items-center rounded-xl bg-slate-50/80 border border-slate-100 shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] shrink-0" style={{ height: '140px', marginBottom: '16px', padding: '20px' }}>
+                  <img src={item.imgSrc} alt={item.imgAlt} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }} className="group-hover:scale-105 transition-transform duration-500 drop-shadow-sm" />
                 </div>
-                <p style={{ fontSize: '9px', fontWeight: 900, color: '#fb923c', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>{item.type}</p>
-                <h4 className="font-extrabold text-slate-900 group-hover:text-orange-500 transition-colors" style={{ fontSize: '15px', marginBottom: '6px', lineHeight: 1.25 }}>{item.title}</h4>
-                <p style={{ fontSize: '12px', color: '#64748b', lineHeight: 1.5, marginTop: 'auto', paddingTop: '6px' }}>{item.description}</p>
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <h4 className="font-extrabold text-slate-900 group-hover:text-orange-500 transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3">{item.type}</p>
+                  <p className="text-slate-500 leading-relaxed text-xs line-clamp-4">{item.description}</p>
+                </div>
               </>
             )}
           </motion.div>

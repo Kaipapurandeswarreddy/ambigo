@@ -6,15 +6,9 @@ const Footer = () => {
       <div className="ambigo-footer__grid max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div>
           <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 relative">
-              <div className="absolute top-0 left-2 w-3 h-3 bg-[#ffb380] rounded-full"></div>
-              <div className="absolute top-2 left-0 w-3 h-3 bg-[#ff9f5c] rounded-full"></div>
-              <div className="absolute top-4 left-2 w-3 h-3 bg-[#ff8c42] rounded-full"></div>
-              <div className="absolute top-2 left-4 w-3 h-3 bg-[#ff9f5c] rounded-full"></div>
-            </div>
+            <img src="/images/ambulance6.png" alt="Ambigo Logo" className="h-10 w-auto object-contain" />
             <span className="font-poppins font-extrabold text-xl text-slate-900">Ambigo</span>
           </div>
-          <p className="text-sm font-medium text-slate-400 mt-8">segonnat ambigo.com</p>
         </div>
         
         <div>

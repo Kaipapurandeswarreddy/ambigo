@@ -89,9 +89,6 @@ function ServiceCard({
 
       <div className="amb-saas-card__body">
         <h3 className="amb-saas-card__title">{service.title}</h3>
-        <p className="amb-saas-card__fare">
-          Base fare <span>{service.fare}</span>
-        </p>
       </div>
 
       <span className="amb-saas-cta">
