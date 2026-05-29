@@ -1,73 +1,110 @@
-# React + TypeScript + Vite
+# Ambigo — Emergency Medical Services Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ambigo is a modern web application for **Ambigo Health Care Pvt Ltd**, providing ambulance booking, teleconsultation, home healthcare, and emergency medical services across Andhra Pradesh, India.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Layer | Technology |
+|-------|-----------|
+| Framework | [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
+| Build Tool | [Vite](https://vitejs.dev/) |
+| Routing | [React Router v7](https://reactrouter.com/) |
+| Styling | [Tailwind CSS v4](https://tailwindcss.com/) + Custom CSS Design System |
+| Animations | [Framer Motion](https://www.framer.com/motion/) |
+| Deployment | [Netlify](https://www.netlify.com/) |
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- [Node.js](https://nodejs.org/) v18 or higher
+- npm v9 or higher
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# Clone the repository
+git clone <repo-url>
+cd ambigo_website
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Install dependencies
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+The production-ready files will be generated in the `dist/` directory.
+
+## Project Structure
+
+```
+ambigo_website/
+├── public/                  # Static assets (images, logos, QR codes)
+│   └── images/              # Organized image assets
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── ui/              # Primitive UI components (Lamp effect, etc.)
+│   │   ├── Navbar.tsx       # Navigation bar
+│   │   ├── Footer.tsx       # Site footer
+│   │   ├── AmbulanceServices.tsx
+│   │   ├── AppShowcase.tsx
+│   │   ├── AchievementsMarquee.tsx
+│   │   ├── TrustedPartners.tsx
+│   │   ├── WhyChooseAmbigo.tsx
+│   │   └── ...
+│   ├── layouts/             # Page layout wrappers
+│   │   └── MainLayout.tsx
+│   ├── lib/                 # Utility functions
+│   │   └── utils.ts
+│   ├── pages/               # Route-level page components
+│   │   ├── Home.tsx
+│   │   ├── AboutUs.tsx
+│   │   ├── Individual.tsx
+│   │   ├── Hospital.tsx
+│   │   ├── Enterprise.tsx
+│   │   ├── Training.tsx
+│   │   ├── Careers.tsx
+│   │   ├── ContactUs.tsx
+│   │   ├── Terms.tsx
+│   │   └── ...
+│   ├── App.tsx              # Root component with route definitions
+│   ├── main.tsx             # Application entry point
+│   ├── index.css            # Main stylesheet (imports all CSS)
+│   ├── old_styles.css       # Legacy styles from original site
+│   └── ambigo-visual-language.css  # Design system overrides
+├── index.html               # HTML entry point
+├── vite.config.ts           # Vite configuration
+├── tsconfig.json            # TypeScript configuration
+├── package.json             # Dependencies and scripts
+└── eslint.config.js         # Linting configuration
+```
+
+## Pages
+
+| Route | Page | Description |
+|-------|------|-------------|
+| `/` | Home | Landing page with hero, services, app showcase |
+| `/AboutUs` | About Us | Company history, mission, and team |
+| `/individual` | Individual | Emergency services for individuals |
+| `/hospital` | Hospital | Hospital partnership and coordination |
+| `/enterprise` | Enterprise | Enterprise emergency solutions |
+| `/training` | Training | Paramedical training programs |
+| `/Careers` | Careers | Job listings and career opportunities |
+| `/ourteam` | Our Team | Team member profiles |
+| `/contactus` | Contact Us | Contact forms and partnership info |
+| `/terms` | Terms | Terms & Conditions, Privacy Policy, Legal |
+| `/firstaid` | First Aid | First aid tips and guidance |
+| `/blogs` | Blog | Blog section |
+
+## License
+
+© 2026 Ambigo Health Care Pvt Ltd. All Rights Reserved.
