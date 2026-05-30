@@ -5,7 +5,8 @@ const AmbulanceDriverForm = () => {
     name: '',
     mobile: '',
     license: '',
-    experience: ''
+    experience: '',
+    bot_field: ''
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -27,7 +28,7 @@ const AmbulanceDriverForm = () => {
     try {
       setLoading(true);
       const timestamp = new Date().toLocaleString();
-      const body = `Name=${encodeURIComponent(formData.name)}&MobileNumber=${encodeURIComponent(formData.mobile)}&License=${encodeURIComponent(formData.license)}&Experience=${encodeURIComponent(formData.experience)}&TimeStamp=${encodeURIComponent(timestamp)}`;
+      const body = `Name=${encodeURIComponent(formData.name)}&MobileNumber=${encodeURIComponent(formData.mobile)}&License=${encodeURIComponent(formData.license)}&Experience=${encodeURIComponent(formData.experience)}&bot_field=${encodeURIComponent(formData.bot_field)}&TimeStamp=${encodeURIComponent(timestamp)}`;
       
       await fetch(webhookUrl, {
         method: 'POST',
@@ -37,7 +38,7 @@ const AmbulanceDriverForm = () => {
       });
       
       setSuccess(true);
-      setFormData({ name: '', mobile: '', license: '', experience: '' });
+      setFormData({ name: '', mobile: '', license: '', experience: '', bot_field: '' });
       alert("Application Submitted Successfully!");
     } catch (err) {
       console.error(err);
@@ -67,6 +68,7 @@ const AmbulanceDriverForm = () => {
               </div>
             ) : (
               <form className="form-container" onSubmit={handleSubmit}>
+                <input type="text" name="bot_field" value={formData.bot_field} onChange={handleChange} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                 <input className="form-input" type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Full Name" />
                 <input className="form-input" type="tel" name="mobile" value={formData.mobile} onChange={handleChange} required placeholder="Mobile Number" />
                 <input className="form-input" type="text" name="license" value={formData.license} onChange={handleChange} required placeholder="Driver's License No." />

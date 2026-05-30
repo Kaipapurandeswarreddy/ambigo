@@ -7,7 +7,8 @@ const HospitalCoordinatorForm = () => {
     phone: '',
     experience: '',
     qualifications: '',
-    notes: ''
+    notes: '',
+    bot_field: ''
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -24,7 +25,7 @@ const HospitalCoordinatorForm = () => {
     try {
       setLoading(true);
       const timestamp = new Date().toLocaleString();
-      const body = `Name=${encodeURIComponent(formData.name)}&Email=${encodeURIComponent(formData.email)}&MobileNumber=${encodeURIComponent(formData.phone)}&Experience=${encodeURIComponent(formData.experience)}&Qualifications=${encodeURIComponent(formData.qualifications)}&Notes=${encodeURIComponent(formData.notes)}&TimeStamp=${encodeURIComponent(timestamp)}`;
+      const body = `Name=${encodeURIComponent(formData.name)}&Email=${encodeURIComponent(formData.email)}&MobileNumber=${encodeURIComponent(formData.phone)}&Experience=${encodeURIComponent(formData.experience)}&Qualifications=${encodeURIComponent(formData.qualifications)}&Notes=${encodeURIComponent(formData.notes)}&bot_field=${encodeURIComponent(formData.bot_field)}&TimeStamp=${encodeURIComponent(timestamp)}`;
       
       await fetch(webhookUrl, {
         method: 'POST',
@@ -34,7 +35,7 @@ const HospitalCoordinatorForm = () => {
       });
       
       setSuccess(true);
-      setFormData({ name: '', email: '', phone: '', experience: '', qualifications: '', notes: '' });
+      setFormData({ name: '', email: '', phone: '', experience: '', qualifications: '', notes: '', bot_field: '' });
       alert("Application Submitted Successfully!");
     } catch (err) {
       console.error(err);
@@ -64,6 +65,7 @@ const HospitalCoordinatorForm = () => {
               </div>
             ) : (
               <form className="form-container" onSubmit={handleSubmit}>
+                <input type="text" name="bot_field" value={formData.bot_field} onChange={handleChange} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                 <input className="form-input" type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Full Name" />
                 <input className="form-input" type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="Email Address" />
                 <input className="form-input" type="tel" name="phone" value={formData.phone} onChange={handleChange} required placeholder="Phone Number" />
