@@ -77,6 +77,76 @@ const achievements = [
     imgAlt: 'JNTU Sakshi',
     theme: 'blue',
     coverImage: true
+  },
+  {
+    type: 'NEWS COVERAGE',
+    title: 'Featured in Local Media',
+    description: "Ambigo's innovative ambulance service and recent achievements featured in local news.",
+    imgSrc: '/images/achievements/achieve_1.jpg',
+    imgAlt: 'News Coverage',
+    theme: 'blue',
+    coverImage: true,
+    containImage: true
+  },
+  {
+    type: 'NEWS COVERAGE',
+    title: 'Press Recognition',
+    description: "Ambigo's innovative ambulance service and recent achievements featured in local news.",
+    imgSrc: '/images/achievements/achieve_2.png',
+    imgAlt: 'Press Recognition',
+    theme: 'orange',
+    coverImage: true,
+    containImage: true
+  },
+  {
+    type: 'NEWS COVERAGE',
+    title: 'Featured in Local Media',
+    description: "Ambigo's innovative ambulance service and recent achievements featured in local news.",
+    imgSrc: '/images/achievements/achieve_3.jpg',
+    imgAlt: 'News Coverage',
+    theme: 'blue',
+    coverImage: true,
+    containImage: true
+  },
+  {
+    type: 'NEWS COVERAGE',
+    title: 'Press Recognition',
+    description: "Ambigo's innovative ambulance service and recent achievements featured in local news.",
+    imgSrc: '/images/achievements/achieve_4.jpg',
+    imgAlt: 'Press Recognition',
+    theme: 'orange',
+    coverImage: true,
+    containImage: true
+  },
+  {
+    type: 'NEWS COVERAGE',
+    title: 'Featured in Local Media',
+    description: "Ambigo's innovative ambulance service and recent achievements featured in local news.",
+    imgSrc: '/images/achievements/achieve_5.jpg',
+    imgAlt: 'News Coverage',
+    theme: 'blue',
+    coverImage: true,
+    containImage: true
+  },
+  {
+    type: 'NEWS COVERAGE',
+    title: 'Press Recognition',
+    description: "Ambigo's innovative ambulance service and recent achievements featured in local news.",
+    imgSrc: '/images/achievements/achieve_6.jpg',
+    imgAlt: 'Press Recognition',
+    theme: 'orange',
+    coverImage: true,
+    containImage: true
+  },
+  {
+    type: 'NEWS COVERAGE',
+    title: 'Featured in Local Media',
+    description: "Ambigo's innovative ambulance service and recent achievements featured in local news.",
+    imgSrc: '/images/achievements/achieve_7.jpg',
+    imgAlt: 'News Coverage',
+    theme: 'blue',
+    coverImage: true,
+    containImage: true
   }
 ];
 
@@ -125,9 +195,23 @@ const AchievementsMarquee = () => {
             {item.coverImage ? (
               <>
                 <div className="relative overflow-hidden shrink-0" style={{ height: '160px', padding: '12px', paddingBottom: 0 }}>
-                  <img src={item.imgSrc} alt={item.imgAlt} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '14px 14px 2px 2px' }} className="group-hover:scale-105 transition-transform duration-700 shadow-lg shadow-black/40" />
-                  <div className="absolute bg-white/90 backdrop-blur-sm text-slate-800 font-bold tracking-widest uppercase border border-slate-200 shadow-sm" style={{ top: '20px', right: '20px', fontSize: '9px', padding: '4px 10px', borderRadius: '9999px' }}>
-                    AWARD
+                  <img 
+                    src={item.imgSrc} 
+                    alt={item.imgAlt} 
+                    onClick={() => window.open(item.imgSrc, '_blank')}
+                    title="Click to view full image"
+                    style={{ 
+                      width: '100%', 
+                      height: '100%', 
+                      objectFit: 'cover', 
+                      objectPosition: 'top center',
+                      borderRadius: '14px 14px 2px 2px',
+                      cursor: 'pointer'
+                    }} 
+                    className="group-hover:scale-105 transition-transform duration-700 shadow-lg shadow-black/40" 
+                  />
+                  <div className="absolute bg-white/90 backdrop-blur-sm text-slate-800 font-bold tracking-widest uppercase border border-slate-200 shadow-sm" style={{ top: '20px', right: '20px', fontSize: '9px', padding: '4px 10px', borderRadius: '9999px', pointerEvents: 'none' }}>
+                    FEATURED
                   </div>
                 </div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flex: 1 }}>
@@ -139,7 +223,14 @@ const AchievementsMarquee = () => {
             ) : (
               <>
                 <div className="w-full flex justify-center items-center rounded-xl bg-slate-50/80 border border-slate-100 shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] shrink-0" style={{ height: '140px', marginBottom: '16px', padding: '20px' }}>
-                  <img src={item.imgSrc} alt={item.imgAlt} style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }} className="group-hover:scale-105 transition-transform duration-500 drop-shadow-sm" />
+                  <img 
+                    src={item.imgSrc} 
+                    alt={item.imgAlt} 
+                    onClick={() => window.open(item.imgSrc, '_blank')}
+                    title="Click to view full image"
+                    style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', cursor: 'pointer' }} 
+                    className="group-hover:scale-105 transition-transform duration-500 drop-shadow-sm" 
+                  />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <h4 className="font-extrabold text-slate-900 group-hover:text-orange-500 transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
