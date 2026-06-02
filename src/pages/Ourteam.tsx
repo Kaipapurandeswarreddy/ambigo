@@ -77,6 +77,7 @@ const categories = [
 
 const Ourteam = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   const filteredTeam = activeFilter === 'All' 
@@ -95,7 +96,8 @@ const Ourteam = () => {
         </div>
         
         <div className="team-container">
-          <div className="filter-buttons flex flex-wrap justify-center gap-3">
+          {/* Desktop Filter Buttons */}
+          <div className="filter-buttons hidden md:flex flex-wrap justify-center gap-3">
             {categories.map((cat) => (
               <button 
                 key={cat}
@@ -105,6 +107,53 @@ const Ourteam = () => {
                 {cat}
               </button>
             ))}
+          </div>
+
+          {/* Mobile Filter Dropdown */}
+          <div className="md:hidden relative flex justify-center mb-8 px-4 w-full z-20">
+            <div className="w-full max-w-xs relative">
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="w-full px-5 py-3 rounded-full bg-white border border-orange-200 text-orange-500 font-bold shadow-[0_4px_15px_rgba(0,0,0,0.05)] flex justify-between items-center transition-all focus:outline-none cursor-pointer"
+              >
+                <span>{activeFilter}</span>
+                <svg
+                  className={`w-5 h-5 text-orange-500 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+              
+              {isDropdownOpen && (
+                <div className="absolute top-[calc(100%+8px)] left-0 right-0 bg-white rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-slate-100 overflow-hidden overflow-y-auto max-h-[250px] z-50">
+                  <div className="py-2">
+                    {categories.map((cat) => (
+                      <div
+                        key={cat}
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => {
+                          setActiveFilter(cat);
+                          setIsDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-5 py-3 font-bold text-[14px] transition-colors cursor-pointer ${
+                          activeFilter === cat 
+                            ? 'bg-orange-50 text-orange-600' 
+                            : 'text-slate-600 hover:bg-slate-50 hover:text-orange-500'
+                        }`}
+                      >
+                        {cat}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           
           {filteredTeam.length > 0 ? (
