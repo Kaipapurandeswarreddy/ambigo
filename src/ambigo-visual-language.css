@@ -643,7 +643,7 @@ h1, h2, h3, h4, h5, h6,
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5.25rem;
+  height: 8rem;
   margin-bottom: 0.85rem;
   flex-shrink: 0;
   transition: transform 0.3s ease;
@@ -1553,7 +1553,7 @@ h1, h2, h3, h4, h5, h6,
   z-index: 0;
 }
 
-.ambigo-subpage-shell.ambigo-vl button,
+.ambigo-subpage-shell.ambigo-vl button:not(.ambigo-navbar__menu-btn),
 .ambigo-subpage-shell.ambigo-vl .conlocation-btn,
 .ambigo-subpage-shell.ambigo-vl .hossubmit-button,
 .ambigo-subpage-shell.ambigo-vl .apply-button {
@@ -2341,7 +2341,7 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .amb-saas-card__media {
-    height: 4.5rem;
+    height: 7rem;
   }
 
   .ambigo-floating-cards {

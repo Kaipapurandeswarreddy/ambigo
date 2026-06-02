@@ -12,7 +12,7 @@ const ParamedicalTrainerForm = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const webhookUrl = "https://script.google.com/macros/s/AKfycbyiuvxmPt0mbvunQMke8tkfyFT1aN0bduvDUp90ISjmf1qN09zCuoljPbPJ3IUsfF8-ew/exec";
+  const webhookUrl = "https://script.google.com/macros/s/AKfycbyCaOAFfMItPquWTgzrMv6hpZBAX_ysEhn-qGigCgB3qYaNyfGa8c8r1QDJIxLIfR2GgQ/exec";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

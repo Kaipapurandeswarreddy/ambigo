@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Using the webhook URL provided by the maintainer
-const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwszu9sfrV95IMDkWvpj-4g9FraWzbrkwhPUzUI2QJxEj02oy-M212pepIweuhUws7e/exec";
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbyXWz6E9sZ3hvEE_RtMw6xz0CL11EgUFEsBiPO5C8G8qU1Fbv9MQLK5JnYElGaXjaRZCg/exec";
 
 const QuickQueryForm: React.FC<{ formClassName?: string, inputClassName?: string, buttonClassName?: string }> = ({ 
   formClassName = "hoscontact-form",

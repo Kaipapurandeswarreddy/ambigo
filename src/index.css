@@ -37,13 +37,21 @@ body,
 .awards-main-card__images {
   display: flex !important;
   justify-content: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap;
 }
 .awards-main-card__images img {
   height: 160px !important;
   width: auto !important;
   object-fit: cover !important;
-  flex: 1 1 0;
-  min-width: 0;
+  border-radius: 24px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
+  border: 4px solid white !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.awards-main-card__images img:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18) !important;
 }
 
 @media (min-width: 768px) {
@@ -52,7 +60,7 @@ body,
     margin: 0 auto;
   }
   .awards-main-card__images img {
-    height: 240px !important;
+    height: 220px !important;
   }
 }
 
@@ -423,7 +431,7 @@ canvas {
   object-fit: cover;
 }
 
-.ambigo-subpage-shell button,
+.ambigo-subpage-shell button:not(.ambigo-navbar__menu-btn),
 .ambigo-subpage-shell .conlocation-btn,
 .ambigo-subpage-shell .conpartner-button,
 .ambigo-subpage-shell .hossubmit-button,
@@ -434,6 +442,14 @@ canvas {
   color: #fff !important;
   font-weight: 800 !important;
   box-shadow: 0 14px 30px rgba(255, 100, 34, 0.22) !important;
+}
+
+/* White hamburger menu on individual page */
+.ambigo-subpage-shell .ambigo-navbar__menu-btn--white {
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  backdrop-filter: blur(8px);
 }
 
 .ambigo-subpage-shell .filter-buttons button,

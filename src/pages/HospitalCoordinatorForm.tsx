@@ -13,7 +13,7 @@ const HospitalCoordinatorForm = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const webhookUrl = "https://script.google.com/macros/s/AKfycbyl9yHbUO4CbjE8Cr8F9A-T90_nuUD9MeYj1s1Jao86JbZ-wM88TZMJmgNx7BH_rGnS/exec";
+  const webhookUrl = "https://script.google.com/macros/s/AKfycbxeVvMhQBwZFE92YzIpgga1jm5j9b26OlFhYncyeBwXAGmZZsDEsNeOHSmMhRhcJIQx/exec";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
