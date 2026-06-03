@@ -18,6 +18,7 @@ import PlaceholderPage from './components/PlaceholderPage';
 import HospitalCoordinatorForm from './pages/HospitalCoordinatorForm';
 import EmergencyStaffForm from './pages/EmergencyStaffForm';
 import ParamedicalTrainerForm from './pages/ParamedicalTrainerForm';
+import GetNotifiedForm from './pages/GetNotifiedForm';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="hospitalCoordinatorForm" element={<HospitalCoordinatorForm />} />
           <Route path="emergencyStaffForm" element={<EmergencyStaffForm />} />
           <Route path="paramedicalTrainerForm" element={<ParamedicalTrainerForm />} />
+          <Route path="get-notified" element={<GetNotifiedForm />} />
           
           {/* Info Pages */}
           <Route path="Careers" element={<Careers />} />

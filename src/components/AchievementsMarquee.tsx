@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const achievements = [
   {
@@ -151,34 +151,40 @@ const achievements = [
 ];
 
 const AchievementsMarquee = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   // Duplicate array to create a seamless infinite loop
   const marqueeItems = [...achievements, ...achievements];
 
   return (
     <div className="w-full relative py-12" style={{ overflowX: 'clip' }}>
-      <motion.div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'nowrap',
-          width: 'max-content',
-          gap: '16px',
-          paddingLeft: '16px',
-        }}
-        animate={{
-          x: ['0%', '-50%'],
-        }}
-        transition={{
-          ease: 'linear',
-          duration: 40,
-          repeat: Infinity,
-        }}
-      >
+      <style>
+        {`
+          @keyframes scroll-marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+          }
+          .marquee-track {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            width: max-content;
+            gap: 16px;
+            padding-left: 16px;
+            animation: scroll-marquee 40s linear infinite;
+          }
+          .marquee-track:hover, .marquee-track.is-paused {
+            animation-play-state: paused !important;
+          }
+        `}
+      </style>
+      <div className={`marquee-track ${selectedImage ? 'is-paused' : ''}`}>
         {marqueeItems.map((item, index) => (
-          <motion.div
+          <div
             key={index}
-            className={`relative shrink-0 flex flex-col group cursor-pointer transition-all duration-500 ease-out hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(249,115,22,0.2)] ${
-              item.coverImage ? 'bg-white/90 backdrop-blur-md border border-orange-100 shadow-sm overflow-hidden' : 'bg-white/90 backdrop-blur-md flex flex-col items-start text-left relative z-10 border border-orange-100 shadow-sm'
+            onClick={() => setSelectedImage(item.imgSrc)}
+            className={`relative shrink-0 flex flex-col group cursor-pointer transition-all duration-500 ease-out hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(249,115,22,0.2)] bg-white group-hover:bg-orange-500 active:bg-orange-500 border border-orange-100 shadow-sm overflow-hidden ${
+              item.coverImage ? '' : 'items-start text-left'
             }`}
             style={{ 
               width: '280px', 
@@ -190,7 +196,7 @@ const AchievementsMarquee = () => {
             }}
           >
             {/* 3D Glow Behind Card */}
-            <div className={`absolute -inset-2 rounded-[24px] blur-2xl opacity-0 group-hover:opacity-60 transition-all duration-500 ease-out -z-10 ${item.theme === 'orange' ? 'bg-orange-500' : 'bg-cyan-500'}`}></div>
+            <div className="absolute -inset-2 rounded-[24px] blur-2xl opacity-20 md:opacity-0 group-hover:opacity-60 group-active:opacity-60 transition-all duration-500 ease-out -z-10 bg-orange-500"></div>
 
             {item.coverImage ? (
               <>
@@ -198,7 +204,6 @@ const AchievementsMarquee = () => {
                   <img 
                     src={item.imgSrc} 
                     alt={item.imgAlt} 
-                    onClick={() => window.open(item.imgSrc, '_blank')}
                     title="Click to view full image"
                     style={{ 
                       width: '100%', 
@@ -215,33 +220,57 @@ const AchievementsMarquee = () => {
                   </div>
                 </div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <h4 className="font-extrabold text-slate-900 group-hover:text-orange-500 transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
-                  <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3">{item.type}</p>
-                  <p className="text-slate-500 leading-relaxed text-xs line-clamp-4">{item.description}</p>
+                  <h4 className="font-extrabold text-slate-900 group-hover:text-white group-active:text-white transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p className="text-orange-500 group-hover:text-white group-active:text-white text-[9px] font-bold uppercase tracking-widest mb-3 transition-colors">{item.type}</p>
+                  <p className="text-slate-500 group-hover:text-orange-50 group-active:text-orange-50 leading-relaxed text-xs line-clamp-4 transition-colors">{item.description}</p>
                 </div>
               </>
             ) : (
               <>
-                <div className="w-full flex justify-center items-center rounded-xl bg-slate-50/80 border border-slate-100 shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] shrink-0" style={{ height: '140px', marginBottom: '16px', padding: '20px' }}>
+                <div className="w-full flex justify-center items-center rounded-xl bg-slate-50/80 group-hover:bg-white group-active:bg-white transition-colors border border-slate-100 shadow-[inset_0_2px_10px_rgba(0,0,0,0.02)] shrink-0" style={{ height: '140px', marginBottom: '16px', padding: '20px' }}>
                   <img 
                     src={item.imgSrc} 
                     alt={item.imgAlt} 
-                    onClick={() => window.open(item.imgSrc, '_blank')}
                     title="Click to view full image"
                     style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', cursor: 'pointer' }} 
                     className="group-hover:scale-105 transition-transform duration-500 drop-shadow-sm" 
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <h4 className="font-extrabold text-slate-900 group-hover:text-orange-500 transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
-                  <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3">{item.type}</p>
-                  <p className="text-slate-500 leading-relaxed text-xs line-clamp-4">{item.description}</p>
+                  <h4 className="font-extrabold text-slate-900 group-hover:text-white group-active:text-white transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p className="text-orange-500 group-hover:text-white group-active:text-white text-[9px] font-bold uppercase tracking-widest mb-3 transition-colors">{item.type}</p>
+                  <p className="text-slate-500 group-hover:text-orange-50 group-active:text-orange-50 leading-relaxed text-xs line-clamp-4 transition-colors">{item.description}</p>
                 </div>
               </>
             )}
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/85 backdrop-blur-sm cursor-pointer transition-opacity"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative inline-block max-w-2xl max-h-[75vh] w-auto h-auto" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={selectedImage} 
+              alt="Maximized achievement" 
+              className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl bg-white"
+            />
+            <button 
+              className="absolute top-3 right-3 text-white hover:text-orange-400 bg-black/50 hover:bg-black/90 rounded-full p-2 transition-colors z-50 shadow-md"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
