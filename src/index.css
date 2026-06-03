@@ -431,7 +431,7 @@ canvas {
   object-fit: cover;
 }
 
-.ambigo-subpage-shell button:not(.ambigo-navbar__menu-btn),
+.ambigo-subpage-shell button:not(.ambigo-navbar__menu-btn):not(.terms-tab-btn),
 .ambigo-subpage-shell .conlocation-btn,
 .ambigo-subpage-shell .conpartner-button,
 .ambigo-subpage-shell .hossubmit-button,
@@ -454,16 +454,17 @@ canvas {
 
 .ambigo-subpage-shell .filter-buttons button,
 .ambigo-subpage-shell .termstabs button {
-  background: rgba(255, 255, 255, 0.72) !important;
-  color: #334155 !important;
-  box-shadow: none !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
   border: 1px solid rgba(226, 232, 240, 0.8) !important;
 }
 
 .ambigo-subpage-shell .filter-buttons button.active,
 .ambigo-subpage-shell .termstabs button.active {
-  background: linear-gradient(90deg, #ff8c42, #ff6422) !important;
+  background: #f97316 !important;
   color: #fff !important;
+  border-color: #f97316 !important;
 }
 
 .ambigo-subpage-shell input,
@@ -1781,4 +1782,18 @@ a.ambigo-service-card {
     object-fit: cover !important;
     object-position: center !important;
   }
+}
+
+.ambigo-subpage-shell button.terms-tab-btn {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+}
+
+.ambigo-subpage-shell button.terms-tab-btn.active-tab {
+  background: #f97316 !important;
+  color: #ffffff !important;
+  border: 2px solid #f97316 !important;
+  box-shadow: 0 4px 12px rgba(249,115,22,0.3) !important;
 }
