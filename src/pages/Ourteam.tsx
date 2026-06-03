@@ -126,7 +126,7 @@ const Ourteam = () => {
 
           {/* Mobile Filter Dropdown */}
           {/* Mobile Filter Dropdown */}
-          <div className="md:hidden !flex !justify-center -mt-2 mb-6 px-4 w-full z-20">
+          <div className="hidden max-md:flex justify-center -mt-2 mb-6 px-4 w-full z-20">
             <div className="w-full max-w-[220px] !flex !flex-col gap-2 mx-auto">
               {/* Trigger */}
               <div
