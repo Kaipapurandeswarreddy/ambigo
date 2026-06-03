@@ -750,12 +750,7 @@ const Home = () => {
                 Daily habits for a healthier lifestyle.
               </p>
             </div>
-            <button
-              type="button"
-              className="ambigo-link-arrow hidden md:inline-flex shrink-0"
-            >
-              View All <span aria-hidden>→</span>
-            </button>
+
           </div>
 
           <div
