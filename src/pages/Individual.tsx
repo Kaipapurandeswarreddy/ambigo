@@ -45,13 +45,6 @@ const Individual = () => {
           <div className="promo-cards-container">
             <div
               className="promo-card group"
-              onClick={() =>
-                window.open(
-                  "https://play.google.com/store/apps/details?id=in.ambigo.user",
-                  "_blank",
-                )
-              }
-              style={{ cursor: "pointer" }}
             >
               <div className="promo-card-content">
                 <div className="qr-code-wrapper">
@@ -67,20 +60,22 @@ const Individual = () => {
                     Scan to download
                   </p>
                 </div>
-                <div className="text-orange-500 font-bold mx-auto md:ml-auto md:mr-0 mt-4 md:mt-0 whitespace-nowrap px-4 py-2 rounded-full border border-orange-200 text-sm md:text-base group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                <div 
+                  className="text-orange-500 font-bold mx-auto md:ml-auto md:mr-0 mt-4 md:mt-0 whitespace-nowrap px-4 py-2 rounded-full border border-orange-200 text-sm md:text-base group-hover:bg-orange-500 group-hover:text-white transition-colors"
+                  onClick={() =>
+                    window.open(
+                      "https://play.google.com/store/apps/details?id=in.ambigo.user",
+                      "_blank"
+                    )
+                  }
+                  style={{ cursor: "pointer" }}
+                >
                   Download Now
                 </div>
               </div>
             </div>
             <div
               className="promo-card group"
-              onClick={() =>
-                window.open(
-                  "https://play.google.com/store/apps/details?id=in.ambigo.user",
-                  "_blank",
-                )
-              }
-              style={{ cursor: "pointer" }}
             >
               <div className="promo-card-content">
                 <div className="app-logo-wrapper">
@@ -95,7 +90,16 @@ const Individual = () => {
                 <div className="promo-text">
                   <h2>Install The App to ride</h2>
                 </div>
-                <div className="text-orange-500 font-bold mx-auto md:ml-auto md:mr-0 mt-4 md:mt-0 whitespace-nowrap px-4 py-2 rounded-full border border-orange-200 text-sm md:text-base group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                <div 
+                  className="text-orange-500 font-bold mx-auto md:ml-auto md:mr-0 mt-4 md:mt-0 whitespace-nowrap px-4 py-2 rounded-full border border-orange-200 text-sm md:text-base group-hover:bg-orange-500 group-hover:text-white transition-colors"
+                  onClick={() =>
+                    window.open(
+                      "https://play.google.com/store/apps/details?id=in.ambigo.user",
+                      "_blank"
+                    )
+                  }
+                  style={{ cursor: "pointer" }}
+                >
                   Start Riding
                 </div>
               </div>
@@ -104,13 +108,6 @@ const Individual = () => {
           <div className="promo-cards-container">
             <div
               className="promo-card group"
-              onClick={() =>
-                window.open(
-                  "https://play.google.com/store/apps/details?id=in.ambigo.driver&pcampaignid=web_share",
-                  "_blank",
-                )
-              }
-              style={{ cursor: "pointer" }}
             >
               <div className="promo-card-content">
                 <div className="qr-code-wrapper">
@@ -126,20 +123,22 @@ const Individual = () => {
                     Scan to download
                   </p>
                 </div>
-                <div className="text-orange-500 font-bold mx-auto md:ml-auto md:mr-0 mt-4 md:mt-0 whitespace-nowrap px-4 py-2 rounded-full border border-orange-200 text-sm md:text-base group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                <div 
+                  className="text-orange-500 font-bold mx-auto md:ml-auto md:mr-0 mt-4 md:mt-0 whitespace-nowrap px-4 py-2 rounded-full border border-orange-200 text-sm md:text-base group-hover:bg-orange-500 group-hover:text-white transition-colors"
+                  onClick={() =>
+                    window.open(
+                      "https://play.google.com/store/apps/details?id=in.ambigo.driver&pcampaignid=web_share",
+                      "_blank"
+                    )
+                  }
+                  style={{ cursor: "pointer" }}
+                >
                   Download Now
                 </div>
               </div>
             </div>
             <div
               className="promo-card group"
-              onClick={() =>
-                window.open(
-                  "https://play.google.com/store/apps/details?id=in.ambigo.driver&pcampaignid=web_share",
-                  "_blank",
-                )
-              }
-              style={{ cursor: "pointer" }}
             >
               <div className="promo-card-content">
                 <div className="app-logo-wrapper">
@@ -154,7 +153,16 @@ const Individual = () => {
                 <div className="promo-text">
                   <h2>Ambigo Partner app: To Drive and Earn</h2>
                 </div>
-                <div className="text-orange-500 font-bold mx-auto md:ml-auto md:mr-0 mt-4 md:mt-0 whitespace-nowrap px-4 py-2 rounded-full border border-orange-200 text-sm md:text-base group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                <div 
+                  className="text-orange-500 font-bold mx-auto md:ml-auto md:mr-0 mt-4 md:mt-0 whitespace-nowrap px-4 py-2 rounded-full border border-orange-200 text-sm md:text-base group-hover:bg-orange-500 group-hover:text-white transition-colors"
+                  onClick={() =>
+                    window.open(
+                      "https://play.google.com/store/apps/details?id=in.ambigo.driver&pcampaignid=web_share",
+                      "_blank"
+                    )
+                  }
+                  style={{ cursor: "pointer" }}
+                >
                   Start Earning
                 </div>
               </div>

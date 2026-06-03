@@ -7,7 +7,9 @@ const achievements = [
     description: 'Gaining expert mentorship, guidance, and ecosystem support to grow faster.',
     imgSrc: '/aic_sku.png',
     imgAlt: 'AIC SKU',
-    theme: 'orange'
+    theme: 'orange',
+    coverImage: true,
+    containImage: true
   },
   {
     type: 'RECOGNIZED AS',
@@ -15,7 +17,9 @@ const achievements = [
     description: 'Office space at RTIH - TATA Innovation Hub, Anantapur.',
     imgSrc: '/rtih.jpg',
     imgAlt: 'RTIH',
-    theme: 'orange'
+    theme: 'orange',
+    coverImage: true,
+    containImage: true
   },
   {
     type: 'RECOGNITION FOR INNOVATION',
@@ -24,7 +28,8 @@ const achievements = [
     imgSrc: '/etv_bharath.png',
     imgAlt: 'ETV Bharath',
     theme: 'blue',
-    coverImage: true
+    coverImage: true,
+    containImage: true
   },
   {
     type: 'INNOVATION CELL (IIC) RECOGNITION',
@@ -42,7 +47,8 @@ const achievements = [
     imgSrc: '/surya_news.png',
     imgAlt: 'Surya News',
     theme: 'blue',
-    coverImage: true
+    coverImage: true,
+    containImage: true
   },
   {
     type: 'STARTUP CREDITS FROM GOOGLE CLOUD',
@@ -50,7 +56,9 @@ const achievements = [
     description: 'Enabling Ambigo to build, test, and scale its technology infrastructure with enterprise-grade cloud services.',
     imgSrc: '/google_cloud.jpg',
     imgAlt: 'Google Cloud',
-    theme: 'orange'
+    theme: 'orange',
+    coverImage: true,
+    containImage: true
   },
   {
     type: 'RECOGNIZED BY',
@@ -58,7 +66,9 @@ const achievements = [
     description: 'Successfully registered and certified under the Startup India initiative.',
     imgSrc: '/dpiit.png',
     imgAlt: 'DPIIT',
-    theme: 'orange'
+    theme: 'orange',
+    coverImage: true,
+    containImage: true
   },
   {
     type: 'TIMES BUSINESS AWARDS',
@@ -67,7 +77,8 @@ const achievements = [
     imgSrc: '/msme_logo.jpeg',
     imgAlt: 'MSME Logo',
     theme: 'blue',
-    coverImage: true
+    coverImage: true,
+    containImage: true
   },
   {
     type: 'RECOGNITION BY JNTUA OFFICIALS',
@@ -76,7 +87,8 @@ const achievements = [
     imgSrc: '/jntu_sakshi.png',
     imgAlt: 'JNTU Sakshi',
     theme: 'blue',
-    coverImage: true
+    coverImage: true,
+    containImage: true
   },
   {
     type: 'NEWS COVERAGE',
@@ -196,23 +208,41 @@ const AchievementsMarquee = () => {
 
             {item.coverImage ? (
               <>
-                <div className="marquee-cover-img relative overflow-hidden shrink-0" style={{ height: '160px' }}>
+                <div className="marquee-cover-img relative overflow-hidden shrink-0 w-full" style={{ height: '160px', backgroundColor: '#f8fafc' }}>
+                  {item.containImage && (
+                    <img 
+                      src={item.imgSrc} 
+                      alt="" 
+                      style={{ 
+                        position: 'absolute',
+                        top: 0, left: 0,
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover', 
+                        filter: 'blur(15px) opacity(0.4)',
+                        transform: 'scale(1.2)',
+                        zIndex: 0
+                      }} 
+                    />
+                  )}
                   <img 
                     src={item.imgSrc} 
                     alt={item.imgAlt} 
                     title="Click to view full image"
                     onClick={() => setSelectedImage(item.imgSrc)}
                     style={{ 
+                      position: 'relative',
                       width: '100%', 
                       height: '100%', 
-                      objectFit: 'cover', 
-                      objectPosition: 'top center',
+                      objectFit: item.containImage ? 'contain' : 'cover', 
+                      objectPosition: item.containImage ? 'center' : 'top center',
                       borderRadius: '14px 14px 2px 2px',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      zIndex: 1
                     }} 
-                    className="mobile-fit-image group-hover:scale-105 transition-transform duration-700 shadow-lg shadow-black/40" 
+                    className="group-hover:scale-105 transition-transform duration-700 shadow-lg shadow-black/40" 
                   />
-                  <div className="absolute bg-white/90 backdrop-blur-sm text-slate-800 font-bold tracking-widest uppercase border border-slate-200 shadow-sm" style={{ top: '20px', right: '20px', fontSize: '9px', padding: '4px 10px', borderRadius: '9999px', pointerEvents: 'none' }}>
+                  <div className="absolute bg-white/90 backdrop-blur-sm text-slate-800 font-bold tracking-widest uppercase border border-slate-200 shadow-sm" style={{ top: '12px', right: '12px', fontSize: '9px', padding: '4px 10px', borderRadius: '9999px', pointerEvents: 'none', zIndex: 10 }}>
                     FEATURED
                   </div>
                 </div>

@@ -1553,7 +1553,7 @@ h1, h2, h3, h4, h5, h6,
   z-index: 0;
 }
 
-.ambigo-subpage-shell.ambigo-vl button:not(.ambigo-navbar__menu-btn),
+.ambigo-subpage-shell.ambigo-vl button:not(.ambigo-navbar__menu-btn):not(.terms-tab-btn),
 .ambigo-subpage-shell.ambigo-vl .conlocation-btn,
 .ambigo-subpage-shell.ambigo-vl .hossubmit-button,
 .ambigo-subpage-shell.ambigo-vl .apply-button {
