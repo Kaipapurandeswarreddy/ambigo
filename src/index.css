@@ -1769,3 +1769,16 @@ a.ambigo-service-card {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 15px 30px rgba(255, 152, 0, 0.2);
 }
+
+@media (max-width: 768px) {
+  .marquee-card {
+    height: 420px !important;
+  }
+  .marquee-cover-img {
+    height: 220px !important;
+  }
+  .mobile-fit-image {
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}

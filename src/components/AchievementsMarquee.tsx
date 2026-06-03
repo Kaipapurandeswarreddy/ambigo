@@ -85,8 +85,7 @@ const achievements = [
     imgSrc: '/images/achievements/achieve_1.jpg',
     imgAlt: 'News Coverage',
     theme: 'blue',
-    coverImage: true,
-    containImage: true
+    coverImage: true
   },
   {
     type: 'NEWS COVERAGE',
@@ -95,8 +94,7 @@ const achievements = [
     imgSrc: '/images/achievements/achieve_2.png',
     imgAlt: 'Press Recognition',
     theme: 'orange',
-    coverImage: true,
-    containImage: true
+    coverImage: true
   },
   {
     type: 'NEWS COVERAGE',
@@ -182,8 +180,7 @@ const AchievementsMarquee = () => {
         {marqueeItems.map((item, index) => (
           <div
             key={index}
-            onClick={() => setSelectedImage(item.imgSrc)}
-            className={`relative shrink-0 flex flex-col group cursor-pointer transition-all duration-500 ease-out hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(249,115,22,0.2)] bg-white group-hover:bg-orange-500 active:bg-orange-500 border border-orange-100 shadow-sm overflow-hidden ${
+            className={`marquee-card relative shrink-0 flex flex-col group transition-all duration-500 ease-out hover:-translate-y-4 hover:shadow-[0_40px_80px_rgba(249,115,22,0.2)] bg-white hover:border-orange-500 transition-colors border border-orange-100 shadow-sm overflow-hidden ${
               item.coverImage ? '' : 'items-start text-left'
             }`}
             style={{ 
@@ -195,16 +192,16 @@ const AchievementsMarquee = () => {
               flexShrink: 0,
             }}
           >
-            {/* 3D Glow Behind Card */}
-            <div className="absolute -inset-2 rounded-[24px] blur-2xl opacity-20 md:opacity-0 group-hover:opacity-60 group-active:opacity-60 transition-all duration-500 ease-out -z-10 bg-orange-500"></div>
+            {/* 3D Glow Behind Card removed as per request */}
 
             {item.coverImage ? (
               <>
-                <div className="relative overflow-hidden shrink-0" style={{ height: '160px', padding: '12px', paddingBottom: 0 }}>
+                <div className="marquee-cover-img relative overflow-hidden shrink-0" style={{ height: '160px' }}>
                   <img 
                     src={item.imgSrc} 
                     alt={item.imgAlt} 
                     title="Click to view full image"
+                    onClick={() => setSelectedImage(item.imgSrc)}
                     style={{ 
                       width: '100%', 
                       height: '100%', 
@@ -213,16 +210,16 @@ const AchievementsMarquee = () => {
                       borderRadius: '14px 14px 2px 2px',
                       cursor: 'pointer'
                     }} 
-                    className="group-hover:scale-105 transition-transform duration-700 shadow-lg shadow-black/40" 
+                    className="mobile-fit-image group-hover:scale-105 transition-transform duration-700 shadow-lg shadow-black/40" 
                   />
                   <div className="absolute bg-white/90 backdrop-blur-sm text-slate-800 font-bold tracking-widest uppercase border border-slate-200 shadow-sm" style={{ top: '20px', right: '20px', fontSize: '9px', padding: '4px 10px', borderRadius: '9999px', pointerEvents: 'none' }}>
                     FEATURED
                   </div>
                 </div>
                 <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <h4 className="font-extrabold text-slate-900 group-hover:text-white group-active:text-white transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
-                  <p className="text-orange-500 group-hover:text-white group-active:text-white text-[9px] font-bold uppercase tracking-widest mb-3 transition-colors">{item.type}</p>
-                  <p className="text-slate-500 group-hover:text-orange-50 group-active:text-orange-50 leading-relaxed text-xs line-clamp-4 transition-colors">{item.description}</p>
+                  <h4 className="font-extrabold text-slate-900 transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3 transition-colors">{item.type}</p>
+                  <p className="text-slate-500 leading-relaxed text-xs line-clamp-4 transition-colors">{item.description}</p>
                 </div>
               </>
             ) : (
@@ -232,14 +229,15 @@ const AchievementsMarquee = () => {
                     src={item.imgSrc} 
                     alt={item.imgAlt} 
                     title="Click to view full image"
+                    onClick={() => setSelectedImage(item.imgSrc)}
                     style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain', cursor: 'pointer' }} 
                     className="group-hover:scale-105 transition-transform duration-500 drop-shadow-sm" 
                   />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <h4 className="font-extrabold text-slate-900 group-hover:text-white group-active:text-white transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
-                  <p className="text-orange-500 group-hover:text-white group-active:text-white text-[9px] font-bold uppercase tracking-widest mb-3 transition-colors">{item.type}</p>
-                  <p className="text-slate-500 group-hover:text-orange-50 group-active:text-orange-50 leading-relaxed text-xs line-clamp-4 transition-colors">{item.description}</p>
+                  <h4 className="font-extrabold text-slate-900 transition-colors" style={{ fontSize: '15px', marginBottom: '4px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p className="text-orange-500 text-[9px] font-bold uppercase tracking-widest mb-3 transition-colors">{item.type}</p>
+                  <p className="text-slate-500 leading-relaxed text-xs line-clamp-4 transition-colors">{item.description}</p>
                 </div>
               </>
             )}

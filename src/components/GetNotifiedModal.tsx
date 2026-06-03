@@ -19,10 +19,8 @@ const GetNotifiedModal: React.FC<GetNotifiedModalProps> = ({ serviceName, onClos
   const webhookUrl = "https://script.google.com/macros/s/AKfycbxrLa-oQNhMjmu0tdlb6Ud0y04EH-ddVjk2gfi9cWhKHHuqPIUSBR7W0Xef8pz3YTLgFQ/exec";
 
   React.useEffect(() => {
-    if (!serviceName) {
-      setSuccess(false);
-      setFormData({ fullName: '', email: '', phone: '', bot_field: '' });
-    }
+    setSuccess(false);
+    setFormData({ fullName: '', email: '', phone: '', bot_field: '' });
   }, [serviceName]);
 
   if (!serviceName) return null;
