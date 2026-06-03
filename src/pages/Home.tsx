@@ -4,6 +4,7 @@ import AppShowcase from "../components/AppShowcase";
 import TrustedPartners from "../components/TrustedPartners";
 import WhyChooseAmbigo from "../components/WhyChooseAmbigo";
 import AchievementsMarquee from "../components/AchievementsMarquee";
+import GetNotifiedModal from "../components/GetNotifiedModal";
 import { LampContainer } from "../components/ui/lamp";
 import { motion } from "framer-motion";
 
@@ -11,6 +12,7 @@ const AMBIGO_PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=in.ambigo.user";
 
 const Home = () => {
+  const [getNotifiedService, setGetNotifiedService] = useState<string | null>(null);
   // --- MOBILE CAROUSEL STATES & REFS ---
 
   // 1. App Features (6 items)
@@ -960,7 +962,7 @@ const Home = () => {
                   Secure & Private
                 </li>
               </ul>
-              <button className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-orange-500 transition-colors mt-auto">
+              <button type="button" onPointerDown={(e) => { e.stopPropagation(); setGetNotifiedService("Doctor Consultation"); }} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setGetNotifiedService("Doctor Consultation"); }} className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-orange-500 transition-colors mt-auto relative z-[60] cursor-pointer" style={{pointerEvents: "auto"}}>
                 Get Notified
               </button>
             </div>
@@ -1027,7 +1029,7 @@ const Home = () => {
                   Easy Reordering
                 </li>
               </ul>
-              <button className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-orange-500 transition-colors mt-auto">
+              <button type="button" onPointerDown={(e) => { e.stopPropagation(); setGetNotifiedService("Pharma Delivery"); }} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setGetNotifiedService("Pharma Delivery"); }} className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-orange-500 transition-colors mt-auto relative z-[60] cursor-pointer" style={{pointerEvents: "auto"}}>
                 Get Notified
               </button>
             </div>
@@ -1094,7 +1096,7 @@ const Home = () => {
                   Digital Reports
                 </li>
               </ul>
-              <button className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-orange-500 transition-colors mt-auto">
+              <button type="button" onPointerDown={(e) => { e.stopPropagation(); setGetNotifiedService("Lab Tests at Home"); }} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setGetNotifiedService("Lab Tests at Home"); }} className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-orange-500 transition-colors mt-auto relative z-[60] cursor-pointer" style={{pointerEvents: "auto"}}>
                 Get Notified
               </button>
             </div>
@@ -1161,7 +1163,7 @@ const Home = () => {
                   Easy Rescheduling
                 </li>
               </ul>
-              <button className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-orange-500 transition-colors mt-auto">
+              <button type="button" onPointerDown={(e) => { e.stopPropagation(); setGetNotifiedService("Visiting Tokens"); }} onClick={(e) => { e.preventDefault(); e.stopPropagation(); setGetNotifiedService("Visiting Tokens"); }} className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-orange-500 transition-colors mt-auto relative z-[60] cursor-pointer" style={{pointerEvents: "auto"}}>
                 Get Notified
               </button>
             </div>
@@ -1317,6 +1319,10 @@ const Home = () => {
           </div>
         </div>
       </div>{" "}
+      <GetNotifiedModal 
+        serviceName={getNotifiedService} 
+        onClose={() => setGetNotifiedService(null)} 
+      />
     </div>
   );
 };
