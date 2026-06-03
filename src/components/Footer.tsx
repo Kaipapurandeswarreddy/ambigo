@@ -28,7 +28,7 @@ const Footer = () => {
             <li><Link to="/terms" className="hover:text-orange-500 transition-colors">Terms and Conditions</Link></li>
             <li><Link to="/contactus" className="hover:text-orange-500 transition-colors">Contact Support</Link></li>
             <li><Link to="/training" className="hover:text-orange-500 transition-colors">Paramedical Training</Link></li>
-            <li><a href="https://maps.app.goo.gl/16ChfkbvnkGXw5ic7" target="_blank" rel="noreferrer" className="hover:text-orange-500 transition-colors">Location</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&query=Old%20administrative%20block%20%2Canantapur%2Candhrapradesh" target="_blank" rel="noreferrer" className="hover:text-orange-500 transition-colors">Location</a></li>
           </ul>
         </div>
 
