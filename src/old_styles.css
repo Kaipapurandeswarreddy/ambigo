@@ -1563,6 +1563,13 @@ body { font-family: Arial, sans-serif; }
 .concard-header { background-color: orange; color: rgb(255, 255, 255); padding: 20px; text-align: center; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.5px; }
 .concard-content { padding: 30px; text-align: center; }
 .concard-content p { color: rgb(102, 102, 102); font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; }
+.concard-details-eyebrow { display: inline-block; margin-bottom: 18px; padding: 6px 14px; border-radius: 999px; background: rgba(255, 140, 66, 0.12); color: #e67a35; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.concard-contact-panel { text-align: left; border-top: 1px solid rgba(15, 23, 42, 0.08); padding-top: 20px; }
+.concard-contact-title { margin: 0 0 16px; text-align: center; font-size: 1.05rem; font-weight: 700; color: #1e293b; }
+.concard-contact-rows { display: flex; flex-direction: column; gap: 14px; list-style: none; margin: 0; padding: 0; }
+.concard-contact-rows li { display: flex; align-items: flex-start; gap: 10px; color: #475569; font-size: 1rem; line-height: 1.55; }
+.concard-contact-rows li svg { flex: 0 0 auto; margin-top: 3px; color: #f97316; }
+.concard-contact-rows li strong { color: #1e293b; font-weight: 700; }
 .conpartner-button { background: transparent; border: 2px solid rgb(255, 51, 102); color: rgb(255, 51, 102); padding: 12px 30px; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.3s; }
 .conpartner-button:hover { background: rgb(255, 51, 102); color: rgb(255, 255, 255); }
 @media screen and (max-width: 968px) {
